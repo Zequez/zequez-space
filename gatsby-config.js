@@ -12,13 +12,12 @@ module.exports = {
     author: 'Ezequiel Schwartzman',
   },
   plugins: [
-    {
-      resolve: 'gatsby-plugin-graphql-codegen',
-      options: {
-        fileName: 'types/graphql.d.ts',
-        documentPaths: ['./src/**/*.{ts,tsx}'],
-      },
-    },
+    // {
+    //   resolve: 'gatsby-plugin-graphql-codegen',
+    //   options: {
+    //     fileName: 'types/graphql.d.ts',
+    //   },
+    // },
     `gatsby-plugin-preval`,
     {
       resolve: 'gatsby-plugin-react-svg',
