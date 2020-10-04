@@ -17,12 +17,14 @@ const Header: React.FC<HeaderProps> = () => {
   `)
 
   return (
-    <header className={`p-4 pb-8 container mx-auto flex justify-center`}>
+    <header className={`p-4 pb-8 container mx-auto flex justify-center z-20`}>
       <Link
         to="/"
-        className="block h-40 w-40 rounded-full overflow-hidden border-8 border-gray-300"
+        className="relative h-40 w-40 block rounded-full overflow-hidden
+        border-8 border-dashed border-white border-opacity-25 z-10"
       >
         <Img
+          title="I love this picture"
           fluid={profile.file.childImageSharp.fluid}
           imgStyle={{ objectFit: 'cover', objectPosition: '75% 75%' }}
         />

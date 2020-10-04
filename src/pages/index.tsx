@@ -1,13 +1,47 @@
-import Reactfrom 'react'
+import React, { useState, useRef, useEffect } from 'react'
+import { Link, PageProps, useStaticQuery, graphql } from 'gatsby'
+import Img from 'gatsby-image'
 import cx from 'classnames'
-import { Link, PageProps } from 'gatsby'
 
 import Layout from '../components/Layout'
 import SEO from '../components/Seo'
+import SvgBlobsList from '@/components/SvgBlobsList'
+import IconTelegram from '~icons/brands/telegram.svg'
+import IconWhatsapp from '~icons/brands/whatsapp.svg'
+import IconLinkedin from '~icons/brands/linkedin.svg'
+import IconEmail from '~icons/solid/envelope.svg'
+import IconRight from '~icons/solid/angle-right.svg'
 
 const IndexPage = ({ location }: PageProps): JSX.Element => {
+  const people = useStaticQuery(graphql`
+    query {
+      allFile(
+        filter: { relativeDirectory: { eq: "people" } }
+        sort: { fields: base, order: ASC }
+      ) {
+        nodes {
+          base
+          relativePath
+          childImageSharp {
+            fluid(
+              maxWidth: 150
+              duotone: { highlight: "#ffffff", shadow: "#000000", opacity: 50 }
+            ) {
+              ...GatsbyImageSharpFluid_withWebp_tracedSVG
+            }
+          }
+        }
+      }
+    }
+  `).allFile.nodes.reduce((all: any, n: any) => {
+    all[n.base] = n.childImageSharp.fluid
+    return all
+  }, {} as Record<string, string>)
+
+  // console.log(people)
+
   return (
-    <Layout>
+    <Layout blobsKey="index">
       <SEO
         keywords={[
           `zequez`,
@@ -27,81 +61,250 @@ const IndexPage = ({ location }: PageProps): JSX.Element => {
         description="My little space of the Internet to spread love and understanding."
         title="Zequez's Space"
       />
-      <div className="flex items-stretch flex-wrap container mx-auto p-2">
-        <Tile icn="bg-green-600" ocn=" w-1/3">
-          Programming
-        </Tile>
-        <Tile icn="bg-green-400" ocn="w-1/3">
-          Work
-          <br />
-          Philosophy
-        </Tile>
-        <Tile icn="bg-orange-600" ocn="w-1/3">
-          Life
-        </Tile>
-        <Tile icn="bg-orange-600" ocn="w-1/3">
-          Writing
-        </Tile>
-        <Tile icn="bg-orange-600" ocn="w-1/3">
-          Visual
-          <br />
-          Art
-        </Tile>
-        <Tile icn="bg-orange-600" ocn="w-1/3">
-          Music
-        </Tile>
-        <Tile icn="bg-orange-600" ocn="w-1/3">
-          Cooking
-        </Tile>
-        <Tile icn="bg-orange-600" ocn="w-1/3">
-          Reading
-        </Tile>
-        <Tile icn="bg-orange-600" ocn="w-1/3">
-          People
-        </Tile>
-        <Tile icn="bg-orange-600" ocn="w-1/3">
-          Links
-        </Tile>
-        <Tile icn="bg-orange-600" ocn="w-1/3">
-          Patreonship
-        </Tile>
-        <Tile icn="bg-orange-600" ocn="w-1/3">
-          Photography
-        </Tile>
-        <Tile icn="bg-blue-600" ocn="w-full">
-          Connect with me
-        </Tile>
-      </div>
+      <Section>
+        <Heading>Hi there</Heading>
+        <Pha>My name is Ezequiel Schwartzman, I also go by Zequez.</Pha>
+        <Pha>I play many roles and enjoy doing many things.</Pha>
+        <Pha>
+          Here you may find a little glimpse of myself, on this little space of
+          the Internet.
+        </Pha>
+      </Section>
+      <Section>
+        <Heading>Software Making</Heading>
+        <SubHeading>We can all choose</SubHeading>
+        <div className="px-4">
+          <div className="bg-white bg-opacity-25 px-4 py-2 rounded-md mb-2">
+            Currently active projects
+          </div>
+          <div className="bg-white bg-opacity-25 px-4 py-2 rounded-md mb-2">
+            Personal projects over the years
+          </div>
+          <div className="bg-white bg-opacity-25 px-4 py-2 rounded-md mb-2">
+            Contract projects over the years
+          </div>
+          <div className="bg-white bg-opacity-25 p-4 rounded-md mb-2">
+            <div className="mb-4">
+              Tech that I find exciting and love playing and learning with
+            </div>
+            <div className="flex flex-wrap justify-center -ml-1 -mr-1">
+              {[
+                'The web ecosystem',
+                'Holochain',
+                'Elm',
+                'TypeScript',
+                'IPFS',
+                '3D Printing',
+                'Ionic Framework',
+                'React',
+                'CouchDB',
+              ].map((tech, i) => (
+                <div
+                  key={i}
+                  className="px-2 py-1 m-1 flex-grow text-center bg-teal-500 rounded-md"
+                >
+                  {tech}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </Section>
+      <Section>
+        <Heading>Help me help</Heading>
+        <SubHeading>We all desire meaningful work</SubHeading>
+        <div className="px-4">
+          <div className="bg-white bg-opacity-25 px-4 py-2 rounded-md mb-2">
+            Help me help each other. <br />
+            Let's work together!
+          </div>
+          <div
+            className=" bg-white bg-opacity-25
+            rounded-md mb-2"
+          >
+            <div className="px-4 py-2 border-b border-white border-opacity-25">
+              Help me help others. <br />
+              Patreon my work.
+            </div>
+            <div className="px-4 py-1 text-sm">Current Patreons</div>
+            {[{ name: 'My ever dwilding savings', amount: 'USD 200' }].map(
+              ({ name, amount }) => (
+                <div
+                  key={name}
+                  className="flex px-4 py-1 border-t border-white border-opacity-25 text-sm"
+                >
+                  <div className="flex-grow">{name}</div> <div>{amount}</div>
+                </div>
+              )
+            )}
+          </div>
+          <div className="bg-white bg-opacity-25 px-4 py-2 rounded-md mb-2">
+            What I use money for? 🔥
+            <br />
+            <div className="text-xs">(Hint: It's mostly rent and food)</div>
+          </div>
+        </div>
+      </Section>
+      <Section>
+        <Heading>Channels of connection</Heading>
+        <SubHeading>
+          I will not respond right away, but I will respond. You can ask me
+          whatever you want.
+        </SubHeading>
+        <div className="px-4 -m-1 flex flex-wrap justify-center">
+          {[
+            {
+              color: 'bg-green-700',
+              Icon: IconWhatsapp,
+              text: '+5492235235568',
+              link: 'https://arsars',
+            },
+            {
+              color: 'bg-blue-500',
+              Icon: IconTelegram,
+              text: '@Zequez',
+              link: 'https://asnaeirosar',
+            },
+            {
+              color: 'bg-red-500',
+              Icon: IconEmail,
+              text: 'zequez@gmail.com',
+              link: 'https://asnaeirosar',
+            },
+          ].map((v, i) => (
+            <a
+              key={i}
+              href={v.link}
+              className={cx(
+                `rounded-md inline-flex items-center m-1 p-2 text-sm`,
+                v.color
+              )}
+            >
+              <v.Icon className="h-4 mr-2 current-color" /> {v.text}
+            </a>
+          ))}
+        </div>
+      </Section>
+      <Section>
+        <Heading>Other facets of me</Heading>
+        <SubHeading>
+          I programmer when gardening. A vegan while programming. A maker when
+          doing activism. I can't separate a part of me from another.
+        </SubHeading>
+        <div className="px-4 flex flex-col">
+          <SimpleLink to="">Writing & Blogging</SimpleLink>
+          <SimpleLink to="">Vegan food alchemy & Recipes</SimpleLink>
+          <SimpleLink to="">DIY & Making</SimpleLink>
+          <SimpleLink to="">Gardening & Growing food</SimpleLink>
+          <SimpleLink to="">
+            Each year of my life in a picture and a sentence
+          </SimpleLink>
+        </div>
+      </Section>
+      <Section>
+        <Heading>Causes I resonate with</Heading>
+        <SubHeading>
+          I believe all these converge into the more beautiful world our hearts
+          know it's possible. Working on anything resonating with this, fills me
+          with great joy.
+        </SubHeading>
+        <div className="px-4 flex flex-col">
+          <SimpleLink to="">Free and open source software movement</SimpleLink>
+          <SimpleLink to="">Veganism movement</SimpleLink>
+          <SimpleLink to="">Engaged buddhism movement</SimpleLink>
+          <SimpleLink to="">Cooperative movement</SimpleLink>
+          <SimpleLink to="">Biodynamic agriculture movement</SimpleLink>
+        </div>
+      </Section>
+      <Section>
+        <Heading>People that inspire me deeply</Heading>
+        <SubHeading>
+          Imagine this as a digital monument to them. Although they may not know
+          it, their work has deeply influenced my standing on life.
+        </SubHeading>
+        <div className="px-4 -mx-1 flex">
+          <Monument
+            name="Thich Nhat Hanh"
+            description="Dharma teacher and gardener"
+            to=""
+            photo={people['thich.jpg']}
+          />
+          <Monument
+            name="Charles Eisenstein"
+            description="Author and philosopher"
+            to=""
+            photo={people['charles.jpg']}
+          />
+          <Monument
+            name="Rupert Sheldrake"
+            description="Biologist and new-science advocate"
+            to=""
+            photo={people['rupert.jpg']}
+          />
+        </div>
+      </Section>
+      <div className="flex-grow bg-blue-500"></div>
     </Layout>
   )
 }
 
-const Tile = ({
-  ocn,
-  icn,
-  children,
-}: {
-  ocn: string
-  icn: string
-  children: React.ReactNode
-}) => (
-  <div
+const Monument: React.FC<{
+  name: string
+  description: string
+  to: string
+  photo: any
+}> = ({ name, description, to, photo }) => (
+  <Link
+    className="bg-white bg-opacity-25 p-4 flex flex-col rounded-md mx-1 w-1/3 text-center"
+    to={to}
+  >
+    <div className="overflow-hidden rounded-full mb-2">
+      <Img fluid={photo} className="text-sm" />
+    </div>
+    <div className="text-sm font-semibold">{name}</div>
+    <div className="text-xs">{description}</div>
+  </Link>
+)
+
+const Section: React.FC<unknown> = ({ children }) => {
+  return (
+    <div className={cx('relative text-white text-opacity-85 mb-4 z-20')}>
+      <div className={cx('relative')}>
+        <div className="container max-w-md mx-auto">{children}</div>
+      </div>
+    </div>
+  )
+}
+
+const Heading: React.FC<{ className?: string }> = ({ children, className }) => (
+  <h2
     className={cx(
-      `relative p-2 h-32 text-xl
-       text-white font-bold text-right`,
-      ocn
+      'px-4 pb-2 font-bold text-3xl tracking-wide leading-none mb-2',
+      className
     )}
   >
-    <div
-      className={cx(
-        `absolute inset-0 m-2 px-2 py-2 flex items-end justify-end
-      shadow-sm rounded-lg cursor-pointer whitespace-no-wrap overflow-hidden`,
-        icn
-      )}
-    >
-      {children}
-    </div>
-  </div>
+    {children}
+  </h2>
+)
+
+const SubHeading: React.FC = ({ children }) => (
+  <p className="px-4 pb-4 -mt-2 text-white text-opacity-50 leading-snug">
+    {children}
+  </p>
+)
+
+const Pha: React.FC<unknown> = ({ children }) => (
+  <p className="px-4 pb-1 font-light leading-snug">{children}</p>
+)
+
+const SimpleLink: React.FC<{ to: string }> = ({ children, to }) => (
+  <Link
+    to={to}
+    className="bg-white bg-opacity-25 hover:bg-opacity-50 px-4 py-2 rounded-md mb-2 inline-flex items-center"
+  >
+    <span className="flex-grow">{children}</span>
+    <IconRight className="fill-current h-6" />
+  </Link>
 )
 
 export default IndexPage

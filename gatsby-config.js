@@ -12,12 +12,6 @@ module.exports = {
     author: 'Ezequiel Schwartzman',
   },
   plugins: [
-    // {
-    //   resolve: 'gatsby-plugin-graphql-codegen',
-    //   options: {
-    //     fileName: 'types/graphql.d.ts',
-    //   },
-    // },
     `gatsby-plugin-preval`,
     {
       resolve: 'gatsby-plugin-react-svg',
@@ -46,13 +40,6 @@ module.exports = {
         },
       },
     },
-    // {
-    //   resolve: 'gatsby-plugin-tslint',
-    //   options: {
-    //     test: /\.ts$|\.tsx$/,
-    //     exclude: /(node_modules|cache|public)/,
-    //   },
-    // },
     // {
     //   resolve: `gatsby-plugin-prefetch-google-fonts`,
     //   options: {
@@ -102,21 +89,6 @@ module.exports = {
         ],
       },
     },
-    // {
-    //   resolve: 'gatsby-plugin-firebase',
-    //   options: {
-    //     credentials: {
-    //       apiKey: 'AIzaSyACBgRN3a7wNKFYj7tT5zcoJJyxnaRyb8c',
-    //       authDomain: 'mardelorg.firebaseapp.com',
-    //       databaseURL: 'https://mardelorg.firebaseio.com',
-    //       projectId: 'mardelorg',
-    //       storageBucket: 'mardelorg.appspot.com',
-    //       messagingSenderId: '223051608916',
-    //       appId: '1:223051608916:web:97fd1ceae63975d12e4ec1',
-    //       measurementId: 'G-VNG95B11PZ',
-    //     },
-    //   },
-    // },
     {
       resolve: 'gatsby-plugin-emoji-favicon',
       options: {

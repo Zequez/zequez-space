@@ -12,6 +12,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      textOpacity: {
+        85: '0.85',
+      },
       colors: {
         primary: 'rgb(36,62,120)',
         secondary: 'rgb(249,218,49)',

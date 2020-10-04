@@ -4,8 +4,11 @@
     "target": "esnext",
     "strict": true,
     "sourceMap": false,
+    "allowJs": true,
     "noImplicitAny": true,
+    "noEmit": true,
     "esModuleInterop": true,
+    "resolveJsonModule": true,
     "typeRoots": ["./types", "./node_modules/@types"],
     "jsx": "react",
     "lib": ["dom", "esnext"],
@@ -23,12 +26,11 @@
     "./node_modules/@fortawesome/fontawesome-free/svgs/*"
   ],
   "files": [
-    "gatsby-node.js",
-    "gatsby-config.js",
     "gatsby-browser.js",
+    "gatsby-node.js",
     "gatsby-ssr.js",
-    "gatsby-ssr.js",
-    "gatsby-ts-bootstrap.js",
+    "gatsby-config.js",
     "prettier.config.js",
+    "tailwind.config.js",
   ]
 }
