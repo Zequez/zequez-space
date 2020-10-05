@@ -72,7 +72,7 @@ const IndexPage = ({ location }: PageProps): JSX.Element => {
       </Section>
       <Section>
         <Heading>Software Making</Heading>
-        <SubHeading>We can all choose</SubHeading>
+        <SubHeading>Craftmanship of the digital era</SubHeading>
         <div className="px-4">
           <div className="bg-white bg-opacity-25 px-4 py-2 rounded-md mb-2">
             Currently active projects
