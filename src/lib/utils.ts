@@ -23,3 +23,21 @@ export function isTouchDevice() {
     return false
   }
 }
+
+export function onMultiDeviceHoverLeave(
+  onHover: () => void,
+  onLeave: () => void
+) {
+  const isTouch = isTouchDevice()
+  return {
+    onMouseOver: !isTouch ? onHover : undefined,
+    onMouseLeave: !isTouch ? onLeave : undefined,
+    onContextMenu: isTouch
+      ? (ev: { preventDefault: () => void }) => {
+          ev.preventDefault()
+        }
+      : undefined,
+    onTouchStart: isTouch ? onHover : undefined,
+    onTouchEnd: isTouch ? onLeave : undefined,
+  }
+}

@@ -15,6 +15,10 @@ html, body, #___gatsby, #gatsby-focus-wrapper, #gatsby-focus-wrapper {
   }
 }
 
+.no-tap-highlight {
+  -webkit-tap-highlight-color: transparent;
+}
+
 .text-shadow {
   text-shadow: 0 1px 0 rgba(0,0,0,0.5)
 }
