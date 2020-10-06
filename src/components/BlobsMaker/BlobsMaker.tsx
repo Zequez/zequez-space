@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import _ from 'lodash'
 import { reverseMap } from '@/lib/utils'
-import SvgBlob, { Path } from './NewSvgBlob'
+import Blob, { Path } from './Blob'
 const blobsStore: Record<string, StorageBlobs> = require('@/data/blobs.json')
 
 type StorageBlobs = {
@@ -123,7 +123,7 @@ const useBlobs = (blobsKey: string): [State, (action: Actions) => void] => {
   ]
 }
 
-const SvgBlobsList: React.FC<{ blobsKey: string }> = ({ blobsKey }) => {
+const BlobsMaker: React.FC<{ blobsKey: string }> = ({ blobsKey }) => {
   const [{ current, saturation, lightness }, run] = useBlobs(blobsKey)
 
   function addNewBlobOnPoint(ev: MouseEvent) {
@@ -153,7 +153,7 @@ const SvgBlobsList: React.FC<{ blobsKey: string }> = ({ blobsKey }) => {
   return (
     <div className="absolute inset-0 overflow-hidden">
       {reverseMap(current.blobs, (blob, i) => (
-        <SvgBlob
+        <Blob
           key={blob.id}
           color={genColor(blob.hue, saturation, lightness)}
           path={blob.path}
@@ -184,7 +184,7 @@ const Button: React.FC<{ onClick: () => void }> = ({ onClick, children }) => (
   </button>
 )
 
-export default SvgBlobsList
+export default BlobsMaker
 
 /* Types Utils */
 

@@ -1,6 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react'
 import cx from 'classnames'
-import { Point, Points, clone } from './Points'
 
 export const SVG_W = 1000
 export const SVG_H = 500
@@ -15,7 +14,7 @@ export type Path = {
   c2y: number // control 2 y
 }
 
-export type SvgBlobProps = {
+export type BlobProps = {
   path: Path
   color: string
   onRemove?: () => void
@@ -35,7 +34,7 @@ const adjustTop = (p: Path): Path =>
       }
     : p
 
-const SvgBlob: React.FC<SvgBlobProps> = ({
+const Blob: React.FC<BlobProps> = ({
   color,
   path: p,
   className,
@@ -221,7 +220,7 @@ const VHandler = ({
   ></div>
 )
 
-const Line = ({ p1, p2 }: { p1: Point; p2: Point }) => (
+const Line = ({ p1, p2 }: { p1: [number, number]; p2: [number, number] }) => (
   <path
     className="hidden md:block"
     stroke="rgba(0,0,0,0.86)"
@@ -230,4 +229,4 @@ const Line = ({ p1, p2 }: { p1: Point; p2: Point }) => (
   />
 )
 
-export default SvgBlob
+export default Blob
