@@ -16,6 +16,7 @@ type Blob = {
 }
 
 const LOCAL_STORAGE_PREFIX = '_blobs4_'
+const HUE_RANGE = 300
 
 const MEDIA_QUERIES = [
   'block sm:hidden',
@@ -82,15 +83,15 @@ const reducer = (state: State, action: Actions) => {
       }
     }
     case 'AddNewBlob': {
-      const color = automaticHue(state.current.blobs, action.top)
-      const blob = newBlob(action.top, color)
+      // const color = automaticHue(state.current.blobs, action.top)
+      const blob = newBlob(action.top, 0)
 
       return {
         ...state,
         current: {
           timestamp: +new Date(),
-          blobs: [...state.current.blobs, blob].sort(
-            (a, b) => a.path.t - b.path.t
+          blobs: adjustHues(
+            [...state.current.blobs, blob].sort((a, b) => a.path.t - b.path.t)
           ),
         },
       }
@@ -229,6 +230,11 @@ const randomColor = (fromHue?: number, toHue?: number) => {
 //   const m = s.match(/^hsl\(([0-9]+)/)
 //   return (m && parseInt(m[1])) || 0
 // }
+const adjustHues = (blobs: Blob[]): Blob[] => {
+  // const height = document.scrollingElement.scrollHeight
+  const space = blobs.length > 0 ? Math.round(HUE_RANGE / blobs.length) : 0
+  return blobs.map((blob, i) => ({ ...blob, hue: space * i }))
+}
 const genColor = (hue: number, saturation: number, lightness: number): string =>
   `hsl(${hue}, ${saturation}%, ${lightness}%)`
 
