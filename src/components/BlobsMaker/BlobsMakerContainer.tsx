@@ -17,7 +17,6 @@ const BlobsMakerContainer: React.FC<unknown> = () => {
   return (
     <>
       <BlobsMaker
-        regenerate={() => run({ type: 'Regenerate' })}
         blobs={blobs}
         saturation={saturation}
         lightness={lightness}

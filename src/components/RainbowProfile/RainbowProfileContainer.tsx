@@ -34,7 +34,7 @@ const RainbowProfileContainer: React.FC<RainbowProfileContainerProps> = ({
     slices: [...Array(SLICES)].map(() => Math.random()),
   }))
   const [animate, setAnimate] = useState(false)
-  const raf = useRef()
+  const raf = useRef(null)
 
   useAnimation(raf, animate, (dt) => {
     const radFract = dt / (ROTATION_SECONDS * 1000)
@@ -59,11 +59,6 @@ const RainbowProfileContainer: React.FC<RainbowProfileContainerProps> = ({
         }),
       }
     })
-    // setRotation((initialRad) => initialRad + radAdd)
-    // setHue((initialHue) => (initialHue + hueAdd) % 360)
-    // setSlices((slices) =>
-
-    // )
   })
 
   return (
