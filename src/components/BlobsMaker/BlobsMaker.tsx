@@ -18,7 +18,9 @@ const BlobsMaker: React.FC<{ blobsKey: string }> = ({ blobsKey }) => {
   // }
 
   useEffect(() => {
-    run({ type: 'Regenerate' })
+    window.requestAnimationFrame(() => {
+      run({ type: 'Regenerate' })
+    })
   }, [])
 
   // useEffect(() => {
