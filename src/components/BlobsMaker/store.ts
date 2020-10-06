@@ -1,9 +1,10 @@
 import { useState } from 'react'
 import _ from 'lodash'
-import { Path } from './Blob'
 
 const LOCAL_STORAGE_PREFIX = '_blobs4_'
 const HUE_RANGE = 300
+const DEFAULT_LIGHT = 50
+const DARK_MODE_LIGHT = 15
 
 type Actions =
   | { type: 'Regenerate' }
@@ -12,17 +13,29 @@ type Actions =
   | { type: 'RemoveBlob'; id: number }
   | { type: 'Save' }
   | { type: 'CleanLocal' }
-  | { type: 'Init' }
+  | { type: 'DarkToggle' }
 
-type Blob = {
+export type Blob = {
   id: number
   path: Path
   hue: number
 }
 
-type State = {
+export type Path = {
+  t: number // top
+  a: number // left handle
+  z: number // right handle
+  c1x: number // control 1 x
+  c1y: number // control 1 y
+  c2x: number // control 2 x
+  c2y: number // control 2 y
+}
+
+export type State = {
   storageKey: string
   blobs: Blob[]
+  height: number
+  width: number
   hue: number
   saturation: number
   lightness: number
@@ -36,9 +49,11 @@ export function initialize(blobsKey: string): State {
   return {
     storageKey: blobsKey,
     blobs,
+    height: 2000,
+    width: 1000,
     hue: _.random(360),
     saturation: 50,
-    lightness: 50,
+    lightness: DEFAULT_LIGHT,
     controlsVisible: true,
   }
 }
@@ -69,15 +84,14 @@ export const reducer = (state: State, action: Actions) => {
   switch (action.type) {
     case 'Regenerate': {
       const hue = (state.hue + _.random(30)) % 360
+      const height = document.body.scrollHeight
+      const width = document.body.scrollWidth
       return {
         ...state,
         hue,
-        blobs: generateBlobs(
-          hue,
-          document.body.scrollHeight,
-          document.body.scrollWidth,
-          120
-        ),
+        height,
+        width,
+        blobs: generateBlobs(hue, height, width, 120),
       }
     }
     case 'UpdatePath': {
@@ -117,8 +131,12 @@ export const reducer = (state: State, action: Actions) => {
       return state
     case 'CleanLocal':
       return { ...state, blobs: [] }
-    case 'Init':
-      return state
+    case 'DarkToggle':
+      return {
+        ...state,
+        lightness:
+          state.lightness !== DARK_MODE_LIGHT ? DARK_MODE_LIGHT : DEFAULT_LIGHT,
+      }
     default:
       throw new Error('never')
   }

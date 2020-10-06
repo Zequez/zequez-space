@@ -20,7 +20,7 @@ const Layout: React.FC<LayoutProps> = ({ children, blobsKey }) => (
     )}
   >
     <Header />
-    <main className="flex-1 w-full flex flex-col">{children}</main>
+    <main className="flex-1 w-full flex flex-col z-30">{children}</main>
     <BlobsMaker blobsKey={blobsKey} />
   </div>
 )

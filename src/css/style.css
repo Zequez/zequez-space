@@ -9,18 +9,9 @@ html, body, #___gatsby, #gatsby-focus-wrapper, #gatsby-focus-wrapper {
 }
 
 @layer utilities {
-  .svg-positioning {
-    width: 1024px;
+  .svg-centering {
     left: 50%;
     transform: translateX(-50%);
-  }
-
-  @screen lg {
-    .svg-positioning {
-      width: 100%;
-      left: auto;
-      transform: none;
-    }
   }
 }
 

@@ -17,7 +17,7 @@ const Header: React.FC<HeaderProps> = () => {
   `)
 
   return (
-    <header className={`p-4 pb-8 container mx-auto flex justify-center z-20`}>
+    <header className={`p-4 pb-8 container mx-auto flex justify-center z-30`}>
       <Link
         to="/"
         className="relative h-40 w-40 block rounded-full overflow-hidden

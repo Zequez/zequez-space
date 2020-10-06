@@ -279,7 +279,7 @@ const Monument: React.FC<{
 
 const Section: React.FC<unknown> = ({ children }) => {
   return (
-    <div className={cx('relative text-white text-opacity-85 mb-4 z-20')}>
+    <div className={cx('relative text-white text-opacity-85 mb-4 z-30')}>
       <div className={cx('')}>
         <div className="container max-w-md mx-auto">{children}</div>
       </div>
