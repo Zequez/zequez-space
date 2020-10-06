@@ -3,7 +3,7 @@ import _ from 'lodash'
 
 const LOCAL_STORAGE_PREFIX = '_blobs4_'
 const HUE_RANGE = 300
-const DEFAULT_LIGHT = 50
+const DEFAULT_LIGHT = 45
 const DARK_MODE_LIGHT = 15
 
 type Actions =
