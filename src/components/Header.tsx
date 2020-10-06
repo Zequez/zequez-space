@@ -8,8 +8,8 @@ const Header: React.FC<HeaderProps> = () => {
     query ProfileImage {
       file(relativePath: { eq: "profile.jpg" }) {
         childImageSharp {
-          fluid(maxWidth: 200, maxHeight: 200) {
-            ...GatsbyImageSharpFluid_withWebp_tracedSVG
+          fixed(width: 160, height: 160) {
+            ...GatsbyImageSharpFixed_withWebp_tracedSVG
           }
         }
       }
@@ -20,13 +20,14 @@ const Header: React.FC<HeaderProps> = () => {
     <header className={`p-4 pb-8 container mx-auto flex justify-center z-30`}>
       <Link
         to="/"
-        className="relative h-40 w-40 block rounded-full overflow-hidden
+        className="relative block rounded-full overflow-hidden
         border-8 border-dashed border-white border-opacity-25 z-10"
       >
         <Img
+          style={{ display: 'block' }}
           title="I love this picture"
-          fluid={profile.file.childImageSharp.fluid}
-          imgStyle={{ objectFit: 'cover', objectPosition: '75% 75%' }}
+          fixed={profile.file.childImageSharp.fixed}
+          imgStyle={{ objectFit: 'cover' }}
         />
       </Link>
     </header>
