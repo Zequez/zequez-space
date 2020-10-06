@@ -1,7 +1,7 @@
 import React from 'react'
 import cx from 'classnames'
 import Header from './Header'
-import BlobsMaker from '@/components/BlobsMaker/BlobsMaker'
+import BlobsMakerContainer from '@/components/BlobsMaker/BlobsMakerContainer'
 
 const devMode = process.env.NODE_ENV === 'development'
 
@@ -21,7 +21,7 @@ const Layout: React.FC<LayoutProps> = ({ children, blobsKey }) => (
   >
     <Header />
     <main className="flex-1 w-full flex flex-col z-30 pb-12">{children}</main>
-    <BlobsMaker blobsKey={blobsKey} />
+    <BlobsMakerContainer />
   </div>
 )
 

@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import _ from 'lodash'
 
-const LOCAL_STORAGE_PREFIX = '_blobs4_'
+export const SVG_W = 500
 const HUE_RANGE = 300
 const DEFAULT_LIGHT = 45
 const DARK_MODE_LIGHT = 15
@@ -32,7 +32,6 @@ export type Path = {
 }
 
 export type State = {
-  storageKey: string
   blobs: Blob[]
   height: number
   width: number
@@ -42,13 +41,9 @@ export type State = {
   controlsVisible: boolean
 }
 
-export function initialize(blobsKey: string): State {
-  const localRaw = localStorage.getItem(`${LOCAL_STORAGE_PREFIX}${blobsKey}`)
-  const local = localRaw && JSON.parse(localRaw)
-  const blobs: Blob[] = local && local.length != null ? (local as Blob[]) : []
+export function initialize(): State {
   return {
-    storageKey: blobsKey,
-    blobs,
+    blobs: [],
     height: 2000,
     width: 1000,
     hue: _.random(360),
@@ -123,12 +118,6 @@ export const reducer = (state: State, action: Actions) => {
     }
     case 'RemoveBlob':
       return state
-    case 'Save':
-      localStorage.setItem(
-        `${LOCAL_STORAGE_PREFIX}${state.storageKey}`,
-        JSON.stringify(state.blobs)
-      )
-      return state
     case 'Clean':
       return { ...state, hue: state.blobs[0]?.hue || state.hue, blobs: [] }
     case 'DarkToggle':
@@ -180,62 +169,9 @@ const newBlob = (t = 300, hue: number = _.random(0, 360)): Blob => ({
   hue,
 })
 
-// const blankPath = {
-//   t: 0,
-//   a: 0,
-//   z: 0,
-//   c1x: 0,
-//   c1y: 0,
-//   c2x: 0,
-//   c2y: 0,
-// }
-
 const adjustHues = (blobs: Blob[]): Blob[] => {
-  // const height = document.scrollingElement.scrollHeight
   const space = blobs.length > 0 ? Math.round(HUE_RANGE / blobs.length) : 0
   return blobs.map((blob, i) => ({ ...blob, hue: (space * i) % 360 }))
 }
 
 const randomId = () => Math.round(Math.random() * 1000000)
-// const randomColor = (fromHue?: number, toHue?: number) => {
-//   if (fromHue != null && toHue != null) {
-//     let toAbs = toHue
-//     if (fromHue > toHue) {
-//       toAbs = Math.abs(toAbs - 360)
-//     }
-
-//     const dx = toAbs - fromHue
-//     return (
-//       _.random(Math.round(fromHue + dx * 0.2), Math.round(toAbs - dx * 0.2)) %
-//       360
-//     )
-//   } else if (fromHue != null) {
-//     return (fromHue + _.random(30, 60)) % 360
-//   } else {
-//     return _.random(360)
-//   }
-// }
-// const parseColorHue = (s: string): number => {
-//   const m = s.match(/^hsl\(([0-9]+)/)
-//   return (m && parseInt(m[1])) || 0
-// }
-
-// const automaticHue = (blobs: Blob[], top: number): number => {
-//   if (blobs.length > 0) {
-//     console.log('Blobs > 0')
-//     const nextBlobIndex = blobs.findIndex((b) => b.path.t > top)
-//     if (nextBlobIndex === -1) {
-//       console.log('No next blob')
-//       return randomColor(blobs[blobs.length - 1].hue)
-//     } else if (nextBlobIndex === 0) {
-//       console.log('Next blob is first')
-//       return randomColor(blobs[0].hue - 60)
-//     } else {
-//       console.log('In between blobs')
-//       return randomColor(blobs[nextBlobIndex - 1].hue, blobs[nextBlobIndex].hue)
-//     }
-//   } else {
-//     console.log('No blobs')
-//     return randomColor()
-//   }
-// }

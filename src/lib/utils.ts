@@ -12,5 +12,14 @@ export function reverseMap<T, O>(
   fn: (a: T, index: number) => O
 ): O[] {
   const l = arg.length - 1
-  return arg.map((_, i, arr) => fn(arr[l - i], l - 1))
+  return arg.map((_, i, arr) => fn(arr[l - i], l - i))
+}
+
+export function isTouchDevice() {
+  try {
+    document.createEvent('TouchEvent')
+    return true
+  } catch (e) {
+    return false
+  }
 }

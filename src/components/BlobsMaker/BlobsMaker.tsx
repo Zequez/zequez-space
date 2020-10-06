@@ -1,35 +1,25 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import cx from 'classnames'
-import _ from 'lodash'
 import { reverseMap } from '@/lib/utils'
-import { useReducer, Path } from './store'
+import { SVG_W, Path, Blob } from './store'
 
-const BlobsMaker: React.FC<{ blobsKey: string }> = ({ blobsKey }) => {
-  const [
-    { blobs, saturation, lightness, hue, height, width },
-    run,
-  ] = useReducer(blobsKey)
+interface BlobsMakerProps {
+  blobs: Blob[]
+  saturation: number
+  lightness: number
+  hue: number
+  height: number
+  width: number
+}
 
-  // function addNewBlobOnPoint(ev: MouseEvent) {
-  //   run({
-  //     type: 'AddNewBlob',
-  //     top: ev.pageY,
-  //   })
-  // }
-
-  useEffect(() => {
-    window.requestAnimationFrame(() => {
-      run({ type: 'Regenerate' })
-    })
-  }, [])
-
-  // useEffect(() => {
-  //   window.addEventListener('dblclick', addNewBlobOnPoint)
-  //   return () => {
-  //     window.removeEventListener('dblclick', addNewBlobOnPoint)
-  //   }
-  // }, [blobs.length])
-
+const BlobsMaker: React.FC<BlobsMakerProps> = ({
+  blobs,
+  saturation,
+  lightness,
+  hue,
+  height,
+  width,
+}) => {
   const lastBlob = blobs[blobs.length - 1]
   const innerBgColor = genColor(
     lastBlob ? lastBlob.hue + (30 % 360) : hue,
@@ -37,7 +27,7 @@ const BlobsMaker: React.FC<{ blobsKey: string }> = ({ blobsKey }) => {
     lightness
   )
   const outerBgColor = genColor(
-    lastBlob ? lastBlob.hue + (30 % 360) : hue,
+    lastBlob ? lastBlob.hue + (180 % 360) : hue,
     saturation - 10,
     lightness - 5
   )
@@ -51,7 +41,7 @@ const BlobsMaker: React.FC<{ blobsKey: string }> = ({ blobsKey }) => {
         <Svg height={height} width={512}>
           {reverseMap(blobs, (blob, i) => (
             <SvgPath
-              key={blob.id}
+              key={i}
               color={genColor(blob.hue, saturation, lightness)}
               path={blob.path}
             />
@@ -68,7 +58,7 @@ const BlobsMaker: React.FC<{ blobsKey: string }> = ({ blobsKey }) => {
           <Svg height={height} width={width}>
             {reverseMap(blobs, (blob, i) => (
               <SvgPath
-                key={blob.id}
+                key={i}
                 color={genColor(
                   (blob.hue + 180) % 360,
                   saturation - 10,
@@ -80,39 +70,20 @@ const BlobsMaker: React.FC<{ blobsKey: string }> = ({ blobsKey }) => {
           </Svg>
         </div>
       ) : null}
-      <div
-        className="fixed bottom-0 inset-x-0 bg-black bg-opacity-25 z-50
-        flex items-center justify-center text-white text-xs"
-      >
-        <Button onClick={() => run({ type: 'Clean' })}>Clear</Button>
-        <Button onClick={() => run({ type: 'Regenerate' })}>Regenerate</Button>
-        <Button onClick={() => run({ type: 'DarkToggle' })}>Toggle Dark</Button>
-      </div>
     </div>
   )
 }
 
-const Button: React.FC<{ onClick: () => void }> = ({ onClick, children }) => (
-  <button
-    className="bg-black bg-opacity-50 hover:bg-opacity-75 py-1 px-2 mx-1 my-2 rounded-md
-    text-white uppercase font-semibold"
-    onClick={onClick}
-  >
-    {children}
-  </button>
-)
-
-const Svg: React.FC<{ height: number; width?: number; scale?: number }> = ({
+const Svg: React.FC<{ height: number; width: number }> = ({
   children,
   height,
   width,
-  scale = 1,
 }) => (
   <svg
-    height={height * scale}
-    width={width * scale}
+    height={height}
+    width={width}
     className={cx('relative svg-centering')}
-    viewBox={`0 0 500 ${height}`}
+    viewBox={`0 0 ${SVG_W} ${height}`}
     preserveAspectRatio="none"
     fill="currentColor"
     xmlns="http://www.w3.org/2000/svg"
@@ -128,8 +99,8 @@ const SvgPath: React.FC<{ path: Path; color: string }> = ({
   <path
     d={`
       M0 ${p.a + p.t}
-      C ${p.c1x} ${p.c1y + p.t}, ${p.c2x} ${p.c2y + p.t}, 500 ${p.z + p.t}
-      L500 0
+      C ${p.c1x} ${p.c1y + p.t}, ${p.c2x} ${p.c2y + p.t}, ${SVG_W} ${p.z + p.t}
+      L${SVG_W} 0
       L0 0
       Z`}
     style={{ fill: color }}
