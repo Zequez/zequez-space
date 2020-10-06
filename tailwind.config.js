@@ -55,6 +55,7 @@ module.exports = {
     borderRadius: ['responsive', 'first', 'last'],
     opacity: ['responsive', 'hover', 'focus', 'disabled'],
     boxShadow: ['responsive', 'hover', 'focus', 'active'],
+    scale: ['responsive', 'hover', 'focus', 'group-hover'],
   },
   // https://github.com/tailwindcss/custom-forms
   plugins: [

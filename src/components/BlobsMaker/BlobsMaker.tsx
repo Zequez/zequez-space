@@ -60,8 +60,10 @@ const BlobsMaker: React.FC<{ blobsKey: string }> = ({ blobsKey }) => {
       </div>
       {width > 512 ? (
         <div
-          className="absolute top-0 inset-x-0 z-10"
-          style={{ backgroundColor: outerBgColor }}
+          className="absolute z-10 inset-0 overflow-hidden"
+          style={{
+            backgroundColor: outerBgColor,
+          }}
         >
           <Svg height={height} width={width}>
             {reverseMap(blobs, (blob, i) => (
@@ -100,14 +102,15 @@ const Button: React.FC<{ onClick: () => void }> = ({ onClick, children }) => (
   </button>
 )
 
-const Svg: React.FC<{ height: number; width?: number }> = ({
+const Svg: React.FC<{ height: number; width?: number; scale?: number }> = ({
   children,
   height,
   width,
+  scale = 1,
 }) => (
   <svg
-    height={height}
-    width={width}
+    height={height * scale}
+    width={width * scale}
     className={cx('relative svg-centering')}
     viewBox={`0 0 500 ${height}`}
     preserveAspectRatio="none"
