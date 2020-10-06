@@ -12,7 +12,7 @@ type Actions =
   | { type: 'AddNewBlob'; top: number }
   | { type: 'RemoveBlob'; id: number }
   | { type: 'Save' }
-  | { type: 'CleanLocal' }
+  | { type: 'Clean' }
   | { type: 'DarkToggle' }
 
 export type Blob = {
@@ -129,8 +129,8 @@ export const reducer = (state: State, action: Actions) => {
         JSON.stringify(state.blobs)
       )
       return state
-    case 'CleanLocal':
-      return { ...state, blobs: [] }
+    case 'Clean':
+      return { ...state, hue: state.blobs[0]?.hue || state.hue, blobs: [] }
     case 'DarkToggle':
       return {
         ...state,

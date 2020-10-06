@@ -186,8 +186,8 @@ const IndexPage = ({ location }: PageProps): JSX.Element => {
       <Section>
         <Heading>Other facets of me</Heading>
         <SubHeading>
-          I programmer when gardening. A vegan while programming. A maker when
-          doing activism. I can't separate a part of me from another.
+          A programmer when gardening. A vegan while programming. A maker when
+          doing activism. One part of me cannot be separated from another.
         </SubHeading>
         <div className="px-4 flex flex-col">
           <SimpleLink to="/writer">Writing & Blogging</SimpleLink>

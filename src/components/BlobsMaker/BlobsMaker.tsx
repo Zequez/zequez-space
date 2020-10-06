@@ -29,20 +29,22 @@ const BlobsMaker: React.FC<{ blobsKey: string }> = ({ blobsKey }) => {
   // }, [blobs.length])
 
   const lastBlob = blobs[blobs.length - 1]
-  const bgColor = genColor(
+  const innerBgColor = genColor(
     lastBlob ? lastBlob.hue + (30 % 360) : hue,
     saturation,
     lightness
   )
+  const outerBgColor = genColor(
+    lastBlob ? lastBlob.hue + (30 % 360) : hue,
+    saturation - 10,
+    lightness - 5
+  )
 
   return (
-    <div
-      className="absolute inset-0 overflow-hidden"
-      style={{ backgroundColor: bgColor }}
-    >
+    <div className="absolute inset-0 overflow-hidden">
       <div
         className="relative mx-auto z-20 sm:shadow-lg"
-        style={{ maxWidth: 512 }}
+        style={{ maxWidth: 512, backgroundColor: innerBgColor }}
       >
         <Svg height={height} width={512}>
           {reverseMap(blobs, (blob, i) => (
@@ -55,7 +57,10 @@ const BlobsMaker: React.FC<{ blobsKey: string }> = ({ blobsKey }) => {
         </Svg>
       </div>
       {width > 512 ? (
-        <div className="absolute top-0 inset-x-0 z-10">
+        <div
+          className="absolute top-0 inset-x-0 z-10"
+          style={{ backgroundColor: outerBgColor }}
+        >
           <Svg height={height} width={width}>
             {reverseMap(blobs, (blob, i) => (
               <SvgPath
@@ -71,15 +76,11 @@ const BlobsMaker: React.FC<{ blobsKey: string }> = ({ blobsKey }) => {
           </Svg>
         </div>
       ) : null}
-
-      {/* <div className="absolute inset-0 z-10" onClick={addNewBlobOnPoint}></div> */}
       <div
-        className="fixed bottom-0 inset-x-0 h-8 bg-black bg-opacity-50 z-50
+        className="fixed bottom-0 inset-x-0 bg-black bg-opacity-25 z-50
         flex items-center justify-center text-white text-xs"
       >
-        BG Editor
-        <Button onClick={() => run({ type: 'CleanLocal' })}>Clean all</Button>
-        <Button onClick={() => run({ type: 'Save' })}>Save</Button>
+        <Button onClick={() => run({ type: 'Clean' })}>Clear</Button>
         <Button onClick={() => run({ type: 'Regenerate' })}>Regenerate</Button>
         <Button onClick={() => run({ type: 'DarkToggle' })}>Toggle Dark</Button>
       </div>
@@ -89,7 +90,8 @@ const BlobsMaker: React.FC<{ blobsKey: string }> = ({ blobsKey }) => {
 
 const Button: React.FC<{ onClick: () => void }> = ({ onClick, children }) => (
   <button
-    className="bg-gray-500 p-1 mx-1 rounded-md text-black"
+    className="bg-black bg-opacity-50 hover:bg-opacity-75 py-1 px-2 mx-1 my-2 rounded-md
+    text-white uppercase font-semibold"
     onClick={onClick}
   >
     {children}
