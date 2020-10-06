@@ -21,7 +21,7 @@ const Layout: React.FC<LayoutProps> = ({ children, blobsKey }) => (
   >
     <Header />
     <main className="flex-1 w-full flex flex-col">{children}</main>
-    {/* <SvgBlobsList blobsKey={blobsKey} /> */}
+    <SvgBlobsList blobsKey={blobsKey} />
   </div>
 )
 

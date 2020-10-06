@@ -5,10 +5,8 @@ import cx from 'classnames'
 
 import Layout from '../components/Layout'
 import SEO from '../components/Seo'
-import SvgBlobsList from '@/components/SvgBlobsList'
 import IconTelegram from '~icons/brands/telegram.svg'
 import IconWhatsapp from '~icons/brands/whatsapp.svg'
-import IconLinkedin from '~icons/brands/linkedin.svg'
 import IconEmail from '~icons/solid/envelope.svg'
 import IconRight from '~icons/solid/angle-right.svg'
 
@@ -192,11 +190,11 @@ const IndexPage = ({ location }: PageProps): JSX.Element => {
           doing activism. I can't separate a part of me from another.
         </SubHeading>
         <div className="px-4 flex flex-col">
-          <SimpleLink to="">Writing & Blogging</SimpleLink>
-          <SimpleLink to="">Vegan food alchemy & Recipes</SimpleLink>
-          <SimpleLink to="">DIY & Making</SimpleLink>
-          <SimpleLink to="">Gardening & Growing food</SimpleLink>
-          <SimpleLink to="">
+          <SimpleLink to="/writer">Writing & Blogging</SimpleLink>
+          <SimpleLink to="/chef">Vegan food alchemy & Recipes</SimpleLink>
+          <SimpleLink to="/maker">DIY & Making</SimpleLink>
+          <SimpleLink to="/gardener">Gardening & Growing food</SimpleLink>
+          <SimpleLink to="/form">
             Each year of my life in a picture and a sentence
           </SimpleLink>
         </div>
@@ -209,36 +207,45 @@ const IndexPage = ({ location }: PageProps): JSX.Element => {
           with great joy.
         </SubHeading>
         <div className="px-4 flex flex-col">
-          <SimpleLink to="">Free and open source software movement</SimpleLink>
-          <SimpleLink to="">Veganism movement</SimpleLink>
-          <SimpleLink to="">Engaged buddhism movement</SimpleLink>
-          <SimpleLink to="">Cooperative movement</SimpleLink>
-          <SimpleLink to="">Biodynamic agriculture movement</SimpleLink>
+          <SimpleLink to="/causes/floss">
+            Free and open source software movement
+          </SimpleLink>
+          <SimpleLink to="/causes/veganism">Veganism movement</SimpleLink>
+          <SimpleLink to="/causes/buddhism">
+            Engaged buddhism movement
+          </SimpleLink>
+          <SimpleLink to="/causes/cooperativism">
+            Cooperative movement
+          </SimpleLink>
+          <SimpleLink to="/causes/biodynamic">
+            Biodynamic agriculture movement
+          </SimpleLink>
         </div>
       </Section>
       <Section>
-        <Heading>People that inspire me deeply</Heading>
+        <Heading>People I follow that inspire me deeply</Heading>
         <SubHeading>
           Imagine this as a digital monument to them. Although they may not know
-          it, their work has deeply influenced my standing on life.
+          it, their work has deeply influenced my standing on life. They have my
+          attention and my gratitude.
         </SubHeading>
         <div className="px-4 -mx-1 flex">
           <Monument
             name="Thich Nhat Hanh"
             description="Dharma teacher and gardener"
-            to=""
+            to="/people/thich"
             photo={people['thich.jpg']}
           />
           <Monument
             name="Charles Eisenstein"
             description="Author and philosopher"
-            to=""
+            to="/people/charles"
             photo={people['charles.jpg']}
           />
           <Monument
             name="Rupert Sheldrake"
             description="Biologist and new-science advocate"
-            to=""
+            to="/people/rupert"
             photo={people['rupert.jpg']}
           />
         </div>
@@ -266,10 +273,14 @@ const Monument: React.FC<{
   </Link>
 )
 
+// const BgUp: React.FC<{ color: string }> = ({ color }) => (
+//   <div className={cx('absolute h-full w-full', color)}></div>
+// )
+
 const Section: React.FC<unknown> = ({ children }) => {
   return (
     <div className={cx('relative text-white text-opacity-85 mb-4 z-20')}>
-      <div className={cx('relative')}>
+      <div className={cx('')}>
         <div className="container max-w-md mx-auto">{children}</div>
       </div>
     </div>

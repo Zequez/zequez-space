@@ -5,74 +5,75 @@ import { Point, Points, clone } from './Points'
 export const SVG_W = 1000
 export const SVG_H = 500
 
-export type SvgBlobType = {
-  id: number
-  top: number
-  path: Points
+export type Path = {
+  t: number // top
+  a: number // left handle
+  z: number // right handle
+  c1x: number // control 1 x
+  c1y: number // control 1 y
+  c2x: number // control 2 x
+  c2y: number // control 2 y
+}
+
+export type SvgBlobProps = {
+  path: Path
   color: string
   onRemove?: () => void
   className?: string
-  onChange?: (props: SvgBlobType) => void
+  onPathChange?: (path: Path) => void
 }
 
-const SvgBlob: React.FC<SvgBlobType> = ({
-  top,
+const adjustTop = (p: Path): Path =>
+  p.a !== 0
+    ? {
+        ...p,
+        t: p.t + p.a,
+        a: 0,
+        z: p.z - p.a,
+        c1y: p.c1y - p.a,
+        c2y: p.c2y - p.a,
+      }
+    : p
+
+const SvgBlob: React.FC<SvgBlobProps> = ({
   color,
-  id,
-  path: initialPath,
+  path: p,
   className,
-  onChange,
-  onRemove,
+  onPathChange,
+  // onRemove,
 }) => {
-  const [dragWithMiddleButton, setDragWithMiddleButton] = useState(false)
-  const [dragIndex, setDragIndex] = useState<number | null>(null)
-  const [path, setP] = useState<Points>(initialPath)
-  const [a, z, c1, c2] = path
-  const aa = a + top
-  const zz = z + top
-  const cc1 = [c1[0], c1[1] + top] as Point
-  const cc2 = [c2[0], c2[1] + top] as Point
+  // const [dragWithMiddleButton, setDragWithMiddleButton] = useState(false)
+  const [dragIndex, setDragIndex] = useState<'a' | 'z' | 'c1' | 'c2' | null>(
+    null
+  )
+  // const [p, setP] = useState<Path>(initialPath)
+  // const aa = a + top
+  // const zz = z + top
+  // const cc1 = [c1[0], c1[1] + top] as Point
+  // const cc2 = [c2[0], c2[1] + top] as Point
 
   const controlsRef = useRef<HTMLDivElement>(null)
 
-  function submitChange() {
-    if (onChange) {
-      if (path[0] !== 0) {
-        const dy = path[0]
-        const newPath = clone(path)
-        newPath[0] -= dy
-        newPath[1] -= dy
-        newPath[2][1] -= dy
-        newPath[3][1] -= dy
-        setP(newPath)
-        onChange({ id, color, top: top + dy, path: newPath })
-      } else {
-        onChange({ id, color, top, path })
+  function drag(ev: MouseEvent) {
+    const rect = controlsRef?.current?.getBoundingClientRect()
+    if (rect && onPathChange && dragIndex != null) {
+      const x = ((ev.clientX - rect.x) / rect.width) * SVG_W
+      const y = ev.clientY - rect.y - p.t
+
+      switch (dragIndex) {
+        case 'a':
+          return onPathChange(adjustTop({ ...p, a: y }))
+        case 'z':
+          return onPathChange({ ...p, z: y })
+        case 'c1':
+          return onPathChange({ ...p, c1x: x, c1y: y })
+        case 'c2':
+          return onPathChange({ ...p, c2x: x, c2y: y })
       }
     }
   }
 
-  function drag(ev: MouseEvent) {
-    const rect = controlsRef?.current?.getBoundingClientRect()
-    if (rect && dragIndex != null) {
-      const newPoint = [
-        ((ev.clientX - rect.x) / rect.width) * SVG_W,
-        ev.clientY - rect.y - top,
-      ] as Point
-
-      setP((oldPath) => {
-        const newPath: Points = [...oldPath]
-        const oldPoint = newPath[dragIndex]
-        newPath[dragIndex] =
-          typeof oldPoint === 'number' ? newPoint[1] : newPoint
-        return newPath
-      })
-    }
-  }
-
-  function finishDrag() {
-    setDragIndex(null)
-  }
+  const finishDrag = () => setDragIndex(null)
 
   useEffect(() => {
     if (dragIndex != null) {
@@ -80,20 +81,19 @@ const SvgBlob: React.FC<SvgBlobType> = ({
       window.addEventListener('mouseup', finishDrag)
       window.document.body.style.userSelect = 'none'
       return () => {
-        console.log('Unmount!')
         window.removeEventListener('mousemove', drag)
         window.removeEventListener('mouseup', finishDrag)
         window.document.body.style.userSelect = ''
       }
     } else {
-      submitChange()
+      // submitChange()
     }
   }, [dragIndex])
 
   return (
     <div
       className={cx('absolute inset-x-0 top-0 text-opacity-85', className)}
-      style={{ height: SVG_H + top }}
+      style={{ height: SVG_H + p.t }}
     >
       <div className="absolute inset-0" ref={controlsRef}>
         {/* {pp.map((p, i) => (
@@ -105,41 +105,48 @@ const SvgBlob: React.FC<SvgBlobType> = ({
           />
         ))} */}
         <VHandler
-          p={aa}
-          active={dragIndex === 0}
-          onMouseDown={() => setDragIndex(0)}
+          y={p.a + p.t}
+          active={dragIndex === 'a'}
+          onMouseDown={() => setDragIndex('a')}
         />
         <VHandler
-          p={zz}
-          active={dragIndex === 1}
+          y={p.z + p.t}
+          active={dragIndex === 'z'}
           right
-          onMouseDown={() => setDragIndex(1)}
+          onMouseDown={() => setDragIndex('z')}
         />
         <Handler
-          p={cc1}
-          active={dragIndex === 2}
-          onMouseDown={() => setDragIndex(2)}
+          x={p.c1x}
+          y={p.c1y + p.t}
+          active={dragIndex === 'c1'}
+          onMouseDown={() => setDragIndex('c1')}
         />
         <Handler
-          p={cc2}
-          active={dragIndex === 3}
-          onMouseDown={() => setDragIndex(3)}
+          x={p.c2x}
+          y={p.c2y + p.t}
+          active={dragIndex === 'c2'}
+          onMouseDown={() => setDragIndex('c2')}
         />
       </div>
-      <div className={cx('absolute inset-0 z-10 pointer-events-none', color)}>
+      <div
+        className={cx('absolute inset-0 z-10 pointer-events-none')}
+        style={{ color }}
+      >
         <svg
           width={SVG_W}
-          height={SVG_H + top}
+          height={SVG_H + p.t}
           className="relative md:w-full md:h-full svg-positioning"
-          viewBox={`0 0 ${SVG_W} ${SVG_H + top}`}
+          viewBox={`0 0 ${SVG_W} ${SVG_H + p.t}`}
           preserveAspectRatio="none"
           fill="currentColor"
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
             d={`
-            M0 ${aa}
-            C ${cc1[0]} ${cc1[1]}, ${cc2[0]} ${cc2[1]}, ${SVG_W} ${zz}
+            M0 ${p.a + p.t}
+            C ${p.c1x} ${p.c1y + p.t}, ${p.c2x} ${p.c2y + p.t}, ${SVG_W} ${
+              p.z + p.t
+            }
             L${SVG_W} 0
             L0 0
             Z`}
@@ -148,8 +155,8 @@ const SvgBlob: React.FC<SvgBlobType> = ({
               console.log('ARSARS')
             }}
           />
-          <Line p1={[0, aa]} p2={cc1} />
-          <Line p1={[SVG_W, zz]} p2={cc2} />
+          <Line p1={[0, p.a + p.t]} p2={[p.c1x, p.c1y + p.t]} />
+          <Line p1={[SVG_W, p.z + p.t]} p2={[p.c2x, p.c2y + p.t]} />
         </svg>
       </div>
     </div>
@@ -157,11 +164,13 @@ const SvgBlob: React.FC<SvgBlobType> = ({
 }
 
 const Handler = ({
-  p,
+  x,
+  y,
   onMouseDown,
   active,
 }: {
-  p: [number, number]
+  x: number
+  y: number
   onMouseDown: () => void
   active: boolean
 }) => (
@@ -175,19 +184,19 @@ const Handler = ({
     )}
     onMouseDown={onMouseDown}
     style={{
-      left: `${(p[0] / SVG_W) * 100}%`,
-      top: `${p[1]}px`,
+      left: `${(x / SVG_W) * 100}%`,
+      top: `${y}px`,
     }}
   ></div>
 )
 
 const VHandler = ({
-  p,
+  y,
   onMouseDown,
   right,
   active,
 }: {
-  p: number
+  y: number
   right?: boolean
   onMouseDown: () => void
   active: boolean
@@ -207,7 +216,7 @@ const VHandler = ({
     style={{
       cursor: 'row-resize',
       [right ? 'right' : 'left']: `0`,
-      top: `${p}px`,
+      top: `${y}px`,
     }}
   ></div>
 )
