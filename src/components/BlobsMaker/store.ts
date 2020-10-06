@@ -5,12 +5,8 @@ import { Path } from './Blob'
 const LOCAL_STORAGE_PREFIX = '_blobs4_'
 const HUE_RANGE = 300
 
-// enum A {
-//   UpdatePath,
-//   AddNewBlob,
-// }
-
 type Actions =
+  | { type: 'Regenerate' }
   | { type: 'UpdatePath'; id: number; path: Blob['path'] }
   | { type: 'AddNewBlob'; top: number }
   | { type: 'RemoveBlob'; id: number }
@@ -30,7 +26,6 @@ type State = {
   hue: number
   saturation: number
   lightness: number
-
   controlsVisible: boolean
 }
 
@@ -41,26 +36,12 @@ export function initialize(blobsKey: string): State {
   return {
     storageKey: blobsKey,
     blobs,
-    hue: 60,
+    hue: _.random(360),
     saturation: 50,
     lightness: 50,
     controlsVisible: true,
   }
 }
-
-const newBlob = (t = 300, hue: number = _.random(0, 360)): Blob => ({
-  id: randomId(),
-  path: {
-    t,
-    a: _.random(-100, 100),
-    z: _.random(-100, 100),
-    c1x: _.random(100, 700),
-    c1y: _.random(-100, 100),
-    c2x: _.random(300, 900),
-    c2y: _.random(-100, 100),
-  },
-  hue,
-})
 
 export const useReducer = (
   ...args: Parameters<typeof initialize>
@@ -86,6 +67,19 @@ export const reducer = (state: State, action: Actions) => {
   }
 
   switch (action.type) {
+    case 'Regenerate': {
+      const hue = (state.hue + _.random(30)) % 360
+      return {
+        ...state,
+        hue,
+        blobs: generateBlobs(
+          hue,
+          document.body.scrollHeight,
+          document.body.scrollWidth,
+          120
+        ),
+      }
+    }
     case 'UpdatePath': {
       const blobIndex = state.blobs.findIndex((v) => v.id === action.id)
       if (blobIndex !== -1) {
@@ -122,8 +116,7 @@ export const reducer = (state: State, action: Actions) => {
       )
       return state
     case 'CleanLocal':
-      localStorage.removeItem(`${LOCAL_STORAGE_PREFIX}${state.storageKey}`)
-      return initialize(state.storageKey)
+      return { ...state, blobs: [] }
     case 'Init':
       return state
     default:
@@ -138,10 +131,51 @@ export const reducer = (state: State, action: Actions) => {
 // ╚██████╔╝   ██║   ██║███████╗███████║
 //  ╚═════╝    ╚═╝   ╚═╝╚══════╝╚══════╝
 
+const generateBlobs = (
+  hue: number,
+  height: number,
+  width: number,
+  spacing: number
+) => {
+  if (height === 0 || spacing === 0)
+    throw new Error('Height and count must be more than 0')
+
+  const count = Math.round(height / spacing) || 1
+  const topSpace = Math.round(height / (count + 1))
+  const hueSpace = Math.round(360 / (count + 1))
+  return [...Array(count)].map((_, i) =>
+    newBlob(i * topSpace, (hue + i * hueSpace) % 360)
+  )
+}
+
+const newBlob = (t = 300, hue: number = _.random(0, 360)): Blob => ({
+  id: randomId(),
+  path: {
+    t,
+    a: _.random(-100, 100),
+    z: _.random(-100, 100),
+    c1x: _.random(100, 700),
+    c1y: _.random(-100, 100),
+    c2x: _.random(300, 900),
+    c2y: _.random(-100, 100),
+  },
+  hue,
+})
+
+// const blankPath = {
+//   t: 0,
+//   a: 0,
+//   z: 0,
+//   c1x: 0,
+//   c1y: 0,
+//   c2x: 0,
+//   c2y: 0,
+// }
+
 const adjustHues = (blobs: Blob[]): Blob[] => {
   // const height = document.scrollingElement.scrollHeight
   const space = blobs.length > 0 ? Math.round(HUE_RANGE / blobs.length) : 0
-  return blobs.map((blob, i) => ({ ...blob, hue: space * i }))
+  return blobs.map((blob, i) => ({ ...blob, hue: (space * i) % 360 }))
 }
 
 const randomId = () => Math.round(Math.random() * 1000000)

@@ -5,7 +5,7 @@ import { useReducer } from './store'
 import Blob from './Blob'
 
 const BlobsMaker: React.FC<{ blobsKey: string }> = ({ blobsKey }) => {
-  const [{ blobs, saturation, lightness }, run] = useReducer(blobsKey)
+  const [{ blobs, saturation, lightness, hue }, run] = useReducer(blobsKey)
 
   function addNewBlobOnPoint(ev: MouseEvent) {
     run({
@@ -15,14 +15,28 @@ const BlobsMaker: React.FC<{ blobsKey: string }> = ({ blobsKey }) => {
   }
 
   useEffect(() => {
+    run({ type: 'Regenerate' })
+  }, [])
+
+  useEffect(() => {
     window.addEventListener('dblclick', addNewBlobOnPoint)
     return () => {
       window.removeEventListener('dblclick', addNewBlobOnPoint)
     }
   }, [blobs.length])
 
+  const lastBlob = blobs[blobs.length - 1]
+  const bgColor = genColor(
+    lastBlob ? lastBlob.hue + (30 % 360) : hue,
+    saturation,
+    lightness
+  )
+
   return (
-    <div className="absolute inset-0 overflow-hidden">
+    <div
+      className="absolute inset-0 overflow-hidden"
+      style={{ backgroundColor: bgColor }}
+    >
       {reverseMap(blobs, (blob, i) => (
         <Blob
           key={blob.id}
@@ -41,6 +55,7 @@ const BlobsMaker: React.FC<{ blobsKey: string }> = ({ blobsKey }) => {
         BG Editor
         <Button onClick={() => run({ type: 'CleanLocal' })}>Clean all</Button>
         <Button onClick={() => run({ type: 'Save' })}>Save</Button>
+        <Button onClick={() => run({ type: 'Regenerate' })}>Regenerate</Button>
       </div>
     </div>
   )
