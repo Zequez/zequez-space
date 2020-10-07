@@ -7,10 +7,9 @@ const devMode = process.env.NODE_ENV === 'development'
 
 type LayoutProps = {
   children: JSX.Element[]
-  blobsKey: string
 }
 
-const Layout: React.FC<LayoutProps> = ({ children, blobsKey }) => (
+const Layout: React.FC<LayoutProps> = ({ children }) => (
   <div
     className={cx(
       'flex flex-col min-h-full font-sans text-gray-900 bg-green-500 relative',

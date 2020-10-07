@@ -1,10 +1,4 @@
-import React, { useState, useEffect } from 'react'
-import _ from 'lodash'
-import cx from 'classnames'
-
-const SLICES = 16
-const MIN_RADIUS = Math.round(((100 / 124) * 100) / 2)
-const MAX_RADIUS = MIN_RADIUS + 50 - MIN_RADIUS
+import React from 'react'
 
 interface RainbowProfileProps {
   rotation: number

@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React from 'react'
 import { Link, PageProps, useStaticQuery, graphql } from 'gatsby'
 import Img from 'gatsby-image'
 import cx from 'classnames'
@@ -10,7 +10,7 @@ import IconWhatsapp from '~icons/brands/whatsapp.svg'
 import IconEmail from '~icons/solid/envelope.svg'
 import IconRight from '~icons/solid/angle-right.svg'
 
-const IndexPage = ({ location }: PageProps): JSX.Element => {
+const IndexPage = ({}: PageProps): JSX.Element => {
   const people = useStaticQuery(graphql`
     query {
       allFile(
@@ -39,7 +39,7 @@ const IndexPage = ({ location }: PageProps): JSX.Element => {
   // console.log(people)
 
   return (
-    <Layout blobsKey="index">
+    <Layout>
       <SEO
         keywords={[
           `zequez`,
