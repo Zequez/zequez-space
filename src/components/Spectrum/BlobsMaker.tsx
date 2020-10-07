@@ -1,7 +1,7 @@
 import React from 'react'
 import cx from 'classnames'
 import { reverseMap } from '@/lib/utils'
-import { SVG_W, Path, Blob } from './store'
+import { Path, Blob } from './store'
 
 interface BlobsMakerProps {
   blobs: Blob[]
@@ -74,6 +74,7 @@ const BlobsMaker: React.FC<BlobsMakerProps> = ({
   )
 }
 
+const SVG_W = 500
 const Svg: React.FC<{ height: number; width: number }> = ({
   children,
   height,

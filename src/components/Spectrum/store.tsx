@@ -2,9 +2,14 @@ import React, { createContext } from 'react'
 import { makeAutoObservable } from 'mobx'
 import _ from 'lodash'
 
-export const SVG_W = 500
 const DEFAULT_LIGHT = 45
 const DARK_MODE_LIGHT = 15
+const PROFILE_SLICES = 16
+
+// Animation
+const ROTATION_SECONDS = 10
+const HUE_ROT_SECONDS = 3
+const UP_DOWN_SECONDS = 2
 
 export class Store {
   blobs: Blob[] = []
@@ -13,6 +18,57 @@ export class Store {
   hue = _.random(360)
   saturation = 50
   lightness = DEFAULT_LIGHT
+
+  profile = generateProfile()
+
+  performAnimation = (dt: number) => {
+    const { profile: p } = this
+
+    if (p.animating) {
+      const radFract = dt / (ROTATION_SECONDS * 1000)
+      const radAdd = Math.PI * 2 * radFract
+      const hueFract = dt / (HUE_ROT_SECONDS * 1000)
+      const hueAdd = -(360 * hueFract)
+      const sliceAdd = dt / (UP_DOWN_SECONDS * 1000)
+
+      p.rotation += radAdd
+      p.hue = (p.hue + hueAdd) % 360
+      p.slices = p.slices.map((size, i) => {
+        let newSize = size + (p.directions[i] ? sliceAdd : -sliceAdd)
+        if (newSize > 1) {
+          newSize = 1 - newSize + 1
+          p.directions[i] = !p.directions[i]
+        } else if (newSize < 0) {
+          newSize = -newSize
+          p.directions[i] = !p.directions[i]
+        }
+        return newSize
+      })
+
+      return true
+    } else {
+      return false
+    }
+  }
+
+  setProfileAnimation = (animate: boolean) => {
+    if (animate) {
+      this.profile.animating = true
+      const { performAnimation } = this
+
+      let requestTime = +new Date()
+      window.requestAnimationFrame(function animation() {
+        const currentTime = +new Date()
+        const dt = currentTime - requestTime
+        if (performAnimation(dt)) {
+          requestTime = currentTime
+          window.requestAnimationFrame(animation)
+        }
+      })
+    } else {
+      this.profile.animating = false
+    }
+  }
 
   constructor() {
     makeAutoObservable(this)
@@ -23,6 +79,7 @@ export class Store {
     this.height = document.body.scrollHeight
     this.width = document.body.scrollWidth
     this.blobs = generateBlobs(this.hue, this.height, this.width, 120)
+    this.profile = generateProfile()
   }
 
   toggleDark = () => {
@@ -64,6 +121,14 @@ export type Path = {
 // ██║   ██║   ██║   ██║██║     ╚════██║
 // ╚██████╔╝   ██║   ██║███████╗███████║
 //  ╚═════╝    ╚═╝   ╚═╝╚══════╝╚══════╝
+
+const generateProfile = () => ({
+  rotation: _.random(Math.PI * 2),
+  hue: _.random(360),
+  slices: [...Array(PROFILE_SLICES)].map(() => Math.random()),
+  directions: [...Array(PROFILE_SLICES)].map(() => Math.random() > 0.5),
+  animating: false,
+})
 
 const generateBlobs = (
   hue: number,
