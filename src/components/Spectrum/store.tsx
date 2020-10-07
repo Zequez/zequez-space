@@ -19,6 +19,14 @@ export class Store {
   saturation = 50
   lightness = DEFAULT_LIGHT
 
+  get isDarkMode() {
+    return this.lightness === DARK_MODE_LIGHT
+  }
+
+  get isPlainMode() {
+    return this.blobs.length === 0
+  }
+
   profile = generateProfile()
 
   performAnimation = (dt: number) => {

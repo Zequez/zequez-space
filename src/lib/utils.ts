@@ -41,3 +41,9 @@ export function onMultiDeviceHoverLeave(
     onTouchEnd: isTouch ? onLeave : undefined,
   }
 }
+
+export const hsl = (
+  hue: number,
+  saturation: number,
+  lightness: number
+): string => `hsl(${hue}, ${saturation}%, ${lightness}%)`

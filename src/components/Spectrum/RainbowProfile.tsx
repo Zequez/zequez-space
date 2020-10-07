@@ -1,4 +1,5 @@
 import React from 'react'
+import { hsl } from '@/lib/utils'
 
 interface RainbowProfileProps {
   rotation: number
@@ -6,6 +7,7 @@ interface RainbowProfileProps {
   slices: number[]
   minBorder: number
   maxBorder: number
+  darkMode: boolean
   scale: number
 }
 
@@ -17,6 +19,7 @@ const RainbowProfile: React.FC<RainbowProfileProps> = ({
   slices,
   minBorder,
   maxBorder,
+  darkMode,
   scale = 1,
 }) => {
   const len = slices.length
@@ -47,6 +50,7 @@ const RainbowProfile: React.FC<RainbowProfileProps> = ({
           a1={rotation + i * dRot}
           a2={rotation + (i + 1) * dRot}
           hue={(hue + dHue * i) % 360}
+          darkMode={darkMode}
         />
       ))}
     </svg>
@@ -61,13 +65,14 @@ const Slice: React.FC<{
   a1: number
   a2: number
   hue: number
-}> = ({ r, a1, a2, hue }) => {
+  darkMode: boolean
+}> = ({ r, a1, a2, hue, darkMode }) => {
   return (
     <path
       d={`M0 0 L ${cos(a1) * r} ${sin(a1) * r} L ${cos(a2) * r} ${
         sin(a2) * r
       } Z`}
-      style={{ fill: `hsl(${hue}, 75%, 45%)` }}
+      style={{ fill: hsl(hue, darkMode ? 60 : 75, darkMode ? 25 : 45) }}
     />
   )
 }

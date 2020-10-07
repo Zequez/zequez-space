@@ -1,6 +1,6 @@
 import React from 'react'
 import cx from 'classnames'
-import { reverseMap } from '@/lib/utils'
+import { reverseMap, hsl } from '@/lib/utils'
 import { Path, Blob } from './store'
 
 interface BlobsMakerProps {
@@ -21,12 +21,12 @@ const BlobsMaker: React.FC<BlobsMakerProps> = ({
   width,
 }) => {
   const lastBlob = blobs[blobs.length - 1]
-  const innerBgColor = genColor(
+  const innerBgColor = hsl(
     lastBlob ? lastBlob.hue + (30 % 360) : hue,
     saturation,
     lightness
   )
-  const outerBgColor = genColor(
+  const outerBgColor = hsl(
     lastBlob ? lastBlob.hue + (180 % 360) : hue,
     saturation - 10,
     lightness - 5
@@ -42,7 +42,7 @@ const BlobsMaker: React.FC<BlobsMakerProps> = ({
           {reverseMap(blobs, (blob, i) => (
             <SvgPath
               key={i}
-              color={genColor(blob.hue, saturation, lightness)}
+              color={hsl(blob.hue, saturation, lightness)}
               path={blob.path}
             />
           ))}
@@ -59,7 +59,7 @@ const BlobsMaker: React.FC<BlobsMakerProps> = ({
             {reverseMap(blobs, (blob, i) => (
               <SvgPath
                 key={i}
-                color={genColor(
+                color={hsl(
                   (blob.hue + 180) % 360,
                   saturation - 10,
                   lightness - 5
@@ -110,13 +110,3 @@ const SvgPath: React.FC<{ path: Path; color: string }> = ({
 )
 
 export default BlobsMaker
-
-// ██╗   ██╗████████╗██╗██╗     ███████╗
-// ██║   ██║╚══██╔══╝██║██║     ██╔════╝
-// ██║   ██║   ██║   ██║██║     ███████╗
-// ██║   ██║   ██║   ██║██║     ╚════██║
-// ╚██████╔╝   ██║   ██║███████╗███████║
-//  ╚═════╝    ╚═╝   ╚═╝╚══════╝╚══════╝
-
-const genColor = (hue: number, saturation: number, lightness: number): string =>
-  `hsl(${hue}, ${saturation}%, ${lightness}%)`

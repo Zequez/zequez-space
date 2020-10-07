@@ -2,6 +2,7 @@ import React from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
 
 import RainbowProfileContainer from './Spectrum/RainbowProfileContainer'
+import Controls from './Spectrum/Controls'
 
 const Header: React.FC<unknown> = () => {
   const profile = useStaticQuery(graphql`
@@ -17,11 +18,15 @@ const Header: React.FC<unknown> = () => {
   `)
 
   return (
-    <header className={`p-4 pb-8 container mx-auto flex justify-center z-30`}>
+    <header
+      className={`p-4 pb-8 container mx-auto max-w-md
+      flex justify-center z-30 relative`}
+    >
       <RainbowProfileContainer
         image={profile.file.childImageSharp.fixed}
         to="/"
       />
+      <Controls />
     </header>
   )
 }
