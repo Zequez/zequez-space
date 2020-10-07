@@ -1,5 +1,5 @@
 import './src/css/style.css'
-import { StoreProvider } from '@/components/BlobsMaker/store'
+import { StoreProvider } from '@/components/Spectrum/store'
 
 const portal = document.createElement('div')
 portal.id = 'modal-root'

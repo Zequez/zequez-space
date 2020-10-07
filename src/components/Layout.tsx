@@ -1,7 +1,7 @@
 import React from 'react'
 import cx from 'classnames'
 import Header from './Header'
-import BlobsMakerContainer from '@/components/BlobsMaker/BlobsMakerContainer'
+import BlobsMakerContainer from '@/components/Spectrum/BlobsMakerContainer'
 
 const devMode = process.env.NODE_ENV === 'development'
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
 
-import RainbowProfileContainer from './RainbowProfile/RainbowProfileContainer'
+import RainbowProfileContainer from './Spectrum/RainbowProfileContainer'
 
 const Header: React.FC<unknown> = () => {
   const profile = useStaticQuery(graphql`
