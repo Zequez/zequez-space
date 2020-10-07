@@ -23,7 +23,7 @@ const RainbowProfileContainer: React.FC<RainbowProfileContainerProps> = observer
     const {
       profile: { rotation, hue, slices, animating },
       setProfileAnimation,
-      isPlainMode,
+      plainMode,
       isDarkMode,
     } = useContext(StoreContext)
 
@@ -34,7 +34,7 @@ const RainbowProfileContainer: React.FC<RainbowProfileContainerProps> = observer
           active={animating}
           onHoverChange={setProfileAnimation}
         />
-        {!isPlainMode && (
+        {!plainMode && (
           <RainbowProfile
             slices={slices}
             rotation={rotation}

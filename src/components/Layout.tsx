@@ -19,7 +19,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => (
     )}
   >
     <Header />
-    <main className="flex-1 w-full flex flex-col z-30 pb-12">{children}</main>
+    <main className="flex-1 w-full flex flex-col z-30">{children}</main>
     <BlobsMakerContainer />
   </div>
 )

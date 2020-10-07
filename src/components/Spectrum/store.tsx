@@ -18,13 +18,15 @@ export class Store {
   hue = _.random(360)
   saturation = 50
   lightness = DEFAULT_LIGHT
+  darkMode = false
+  plainMode = false
 
   get isDarkMode() {
     return this.lightness === DARK_MODE_LIGHT
   }
 
-  get isPlainMode() {
-    return this.blobs.length === 0
+  setPlainMode = (mode: boolean) => {
+    this.plainMode = mode
   }
 
   profile = generateProfile()
@@ -93,11 +95,6 @@ export class Store {
   toggleDark = () => {
     this.lightness =
       this.lightness !== DARK_MODE_LIGHT ? DARK_MODE_LIGHT : DEFAULT_LIGHT
-  }
-
-  clean = () => {
-    this.hue = this.blobs[0]?.hue || this.hue
-    this.blobs = []
   }
 }
 

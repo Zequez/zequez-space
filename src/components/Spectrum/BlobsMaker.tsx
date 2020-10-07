@@ -22,12 +22,12 @@ const BlobsMaker: React.FC<BlobsMakerProps> = ({
 }) => {
   const lastBlob = blobs[blobs.length - 1]
   const innerBgColor = hsl(
-    lastBlob ? lastBlob.hue + (30 % 360) : hue,
+    (lastBlob ? lastBlob.hue : hue) + (30 % 360),
     saturation,
     lightness
   )
   const outerBgColor = hsl(
-    lastBlob ? lastBlob.hue + (180 % 360) : hue,
+    (lastBlob ? lastBlob.hue : hue) + (180 % 360),
     saturation - 10,
     lightness - 5
   )

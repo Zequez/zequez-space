@@ -12,6 +12,7 @@ const BlobsMakerContainer: React.FC<unknown> = observer(() => {
     height,
     width,
     regenerate,
+    plainMode,
   } = useContext(StoreContext)
 
   useEffect(() => {
@@ -22,7 +23,7 @@ const BlobsMakerContainer: React.FC<unknown> = observer(() => {
 
   return (
     <BlobsMaker
-      blobs={blobs}
+      blobs={plainMode ? [] : blobs}
       saturation={saturation}
       lightness={lightness}
       hue={hue}

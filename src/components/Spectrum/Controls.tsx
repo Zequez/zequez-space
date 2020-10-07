@@ -9,9 +9,13 @@ import EyeIcon from '~icons/solid/eye.svg'
 import EyeSlashIcon from '~icons/solid/eye-slash.svg'
 
 const Controls: React.FC<unknown> = observer(() => {
-  const { clean, regenerate, toggleDark, isDarkMode, isPlainMode } = useContext(
-    StoreContext
-  )
+  const {
+    regenerate,
+    toggleDark,
+    isDarkMode,
+    setPlainMode,
+    plainMode,
+  } = useContext(StoreContext)
 
   const btnGradient = `conic-gradient(
       hsla(360, 90%, 45%, 75%),
@@ -46,10 +50,10 @@ const Controls: React.FC<unknown> = observer(() => {
         <SeedlingIcon />
       </Button>
       <Button
-        onClick={isPlainMode ? regenerate : clean}
+        onClick={() => setPlainMode(!plainMode)}
         style={{ backgroundColor: 'rgba(255,255,255,0.25)' }}
       >
-        {isPlainMode ? <EyeSlashIcon /> : <EyeIcon />}
+        {plainMode ? <EyeSlashIcon /> : <EyeIcon />}
       </Button>
     </div>
   )
