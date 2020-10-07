@@ -293,7 +293,7 @@ const Section: React.FC<unknown> = ({ children }) => {
 const Heading: React.FC<{ className?: string }> = ({ children, className }) => (
   <h2
     className={cx(
-      'px-4 pb-2 font-bold text-3xl tracking-wide leading-none mb-2',
+      'px-4 pb-2 font-bold text-3xl tracking-wide text-opacity-100 text-white leading-none mb-2',
       className
     )}
   >
