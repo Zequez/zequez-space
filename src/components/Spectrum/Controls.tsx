@@ -32,7 +32,7 @@ const Controls: React.FC<unknown> = observer(() => {
   return (
     <div
       className="absolute top-0 right-0 z-50
-        flex flex-col text-white text-xs mt-6"
+        flex flex-col text-white text-xs mt-4 mr-4"
     >
       <Button
         onClick={toggleDark}
