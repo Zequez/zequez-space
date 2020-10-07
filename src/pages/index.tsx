@@ -299,9 +299,7 @@ const Heading: React.FC<{ className?: string }> = ({ children, className }) => (
 )
 
 const SubHeading: React.FC = ({ children }) => (
-  <p className="px-4 pb-4 -mt-2 text-white text-opacity-50 leading-snug">
-    {children}
-  </p>
+  <p className="px-4 pb-4 -mt-2 font-light leading-snug">{children}</p>
 )
 
 const Pha: React.FC<unknown> = ({ children }) => (

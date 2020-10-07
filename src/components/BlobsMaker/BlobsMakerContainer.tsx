@@ -1,16 +1,24 @@
-import React, { useEffect } from 'react'
-import { useReducer } from './store'
+import React, { useEffect, useContext } from 'react'
+import { observer } from 'mobx-react-lite'
+import { StoreContext } from './store'
 import BlobsMaker from './BlobsMaker'
 
-const BlobsMakerContainer: React.FC<unknown> = () => {
-  const [
-    { blobs, saturation, lightness, hue, height, width },
-    run,
-  ] = useReducer()
+const BlobsMakerContainer: React.FC<unknown> = observer(() => {
+  const {
+    blobs,
+    saturation,
+    lightness,
+    hue,
+    height,
+    width,
+    regenerate,
+    toggleDark,
+    clean,
+  } = useContext(StoreContext)
 
   useEffect(() => {
     window.requestAnimationFrame(() => {
-      run({ type: 'Regenerate' })
+      regenerate()
     })
   }, [])
 
@@ -25,13 +33,13 @@ const BlobsMakerContainer: React.FC<unknown> = () => {
         width={width}
       />
       <Controls
-        onClean={() => run({ type: 'Clean' })}
-        onRegenerate={() => run({ type: 'Regenerate' })}
-        onToggleDark={() => run({ type: 'DarkToggle' })}
+        onClean={clean}
+        onRegenerate={regenerate}
+        onToggleDark={toggleDark}
       />
     </>
   )
-}
+})
 
 const Controls: React.FC<{
   onClean: () => void

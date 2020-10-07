@@ -1,7 +1,8 @@
 import './src/css/style.css'
-// import 'firebase/auth'
-// import 'firebase/firestore'
+import { StoreProvider } from '@/components/BlobsMaker/store'
 
 const portal = document.createElement('div')
 portal.id = 'modal-root'
 document.body.appendChild(portal)
+
+export const wrapRootElement = StoreProvider

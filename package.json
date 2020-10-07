@@ -77,6 +77,8 @@
     "gatsby-transformer-yaml-full": "^0.3.4",
     "gatsby-yaml-full-markdown": "^0.3.4",
     "lodash": "^4.17.20",
+    "mobx": "^6.0.1",
+    "mobx-react-lite": "^3.0.0",
     "postcss": "^8.0.9",
     "prettier": "2.1.2",
     "query-string": "^6.13.2",
