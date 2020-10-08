@@ -36,8 +36,6 @@ const IndexPage = ({}: PageProps): JSX.Element => {
     return all
   }, {} as Record<string, string>)
 
-  // console.log(people)
-
   return (
     <Layout>
       <SEO
@@ -104,6 +102,12 @@ const IndexPage = ({}: PageProps): JSX.Element => {
                   {tech}
                 </div>
               ))}
+            </div>
+            <div className="flex justify-end mt-2">
+              <Link className="inline-flex">
+                Learn more about the tech I've used
+                <IconRight className="ml-2 h-6 fill-current" />
+              </Link>
             </div>
           </div>
         </div>

@@ -1,0 +1,303 @@
+languages:
+  -
+    name: Español
+    description:
+      Well, I was born on Mar del Plata, Argentina, and everyone speaks Spanish here,
+      so naturally, I do to.
+  -
+    name: English
+    description:
+      I learned English by necessity, I hated being taught English when I was a kid,
+      but then when I started browsing the Internet I wanted to understand and I just
+      absorbed it by osmosis, I couldn't really said I ever sat to learn English.
+programmingLanguages:
+  -
+    name: Ruby
+    experience: 10
+    interest: 6
+    description:
+      Ruby is a fun language, the nifty one-liners and the way you can iterate
+      through arrays it's just fun to do. I learned it mostly for Rails and then
+      I wrote quite a few tools to scrap websites and to do tasks on my computer.
+      Nowadays I value more type safety and explicitness when choosing
+      a language. But the magic of Ruby is still in my heart.
+  -
+    name: TypeScript
+    experience: 9
+    interest: 10
+    description:
+      Coming from scripting languages, when you first start writing type safe
+      software it feels a little cumbersome, but then when you taste the joy of
+      errors being detected at built-time and easy refactoring, you are sold.
+      I mostly write anything JS related on TypeScript today.
+  -
+    name: JavaScript
+    experience: 10
+    interest: 8
+    description:
+      This is the bread and vegan butter of the web nowadays. JavaScript dominates
+      every corner of the Earth, it's like air. I enjoy using it not because the
+      language itself is really that fun, but the things you can do with it
+      are just endless. If you don't like the language, you can just find another one
+      that compiles to JavaScript, which is awesome. Nowadays I like TypesScript and Elm
+      on that regard.
+  -
+    name: Elm
+    experience: 7
+    interest: 9
+    description:
+      Elm is a pure functional programming language for the front end. It was
+      the original inspiration for Redux. I gotta say, coding in Elm feels FUN,
+      the compiler is so nice that it feels like you're just playing golf to get
+      everything done the most gracefully, the code just feels perfect and bug-free
+      when you look at it. It's a great feeling.
+      I really don't have much production experience, but I did write a small app
+      to track activities (The Hero Journey) in Elm, which I might continue in the future,
+      it's unfinished.
+  -
+    name: Rust
+    experience: 2
+    interest: 10
+    description:
+      I mostly desire to learn Rust to code for Holochain. Rust is like C++ but
+      better, and made by Mozilla, which is great, it's a great foundation.
+      I haven't started yet, aside from the basic "hello world", but I'll get there,
+      and I'm very interested on getting there, I never managed to get very
+      proficient with a systems-programming language (I used C/C++ for some time
+      and to write some Arduino scripts, but that's all), so I would really love to
+      learn.
+  -
+    name: PHP
+    experience: 5
+    interest: 1
+    description:
+      Come one, this was my bread an vegan butter back in the day when I was
+      learning how to use the web. I probably wrote the most buggy, insecure
+      software I ever did. But did it work? Well yes, most of the time.
+      Joking aside, I really did mostly learned programming with PHP and
+      I built a great deal of sites before I learned Ruby & Rails.
+      I remember when I first heard about FRAMEWORKS, my mind was blown, they solved
+      so many problems that I was solving by writing my own set of tools. I was
+      pleasantly surprised to discover that they actually used some of the same patterns
+      I figured out on my own.
+      All in all, PHP served me well.
+  -
+    name: CoffeeScript
+    experience: 9
+    interest: 3
+    description:
+      I used CoffeeScript back when I was learning Rails. It was fun, it was
+      pretty, and it served me well. I built a web app (Mapa de Transportes) that
+      the front end was all CoffeeScript and no frameworks, was fun.
+      Nowadays, I value type-safety and JavaScript has evolved to have such an
+      incredible amount of features, that I find no reason to write on CoffeeScript
+      rather than TypeScript.
+frameworks:
+  -
+    name: React
+    experience: 10
+    interest: 9
+    description:
+      React is the hammer of the web. Honestly, it's the go-to solution to build
+      anything as quick as possible with the maximum community support.
+      It also has the highest demand if you're seeking to find conventional work.
+      It's a great tool and I like using it.
+  -
+    name: Svelte
+    experience: 7
+    interest: 6
+    description:
+      Svelte is a framework that gets precompiled on build and allows you
+      to do reactive programming on a budget. Imagine the reactivity of MobX
+      but lightweight like lit-html. It's very light, and it's very interesting.
+      It also has great support for animations.
+  -
+    name: Gatsby
+    experience: 8
+    interest: 6
+    description:
+      At first I was hesitant about all the extra weight of the app and all the
+      extra KB of data. Then I started actually using it and stopped worrying.
+      Gatsby it's actually a great peace of tech, the plugins solve a lot of
+      things you would have to manually configure on Webpack. I mean, it does uses
+      Webpack on the back.
+      Honestly, if you want to forget about your build system, Gatsby is a cool
+      option, it does a lot of optimizations and configuring for you. It would be
+      cool if they supported other frameworks in addition to React though.
+      NextJS on static-only mode seems like a good alternative also.
+  -
+    name: Ruby on Rails
+    experience: 9
+    interest: 4
+    description:
+      Rails served me well. It was a huge update from frameworkless PHP and
+      it landed me some incredible jobs that allowed me to move forward in
+      my life, so I'm in deep gratitude.
+      That said, while I still believe it's an incredible tech and allows you to
+      create quick web apps, I really don't enjoy using it much anymore and
+      it doesn't stir much interest in me.
+      I believe the future is with decentralized applications, so monolithic backends
+      like Rails are not really useful for that. The party is the the front.
+  -
+    name: NextJS
+    experience: 3
+    interest: 8
+    description:
+      I'll be honest, I don't have much experience with NextJS. It's a React
+      framework that does server side rendering and also works on the backend.
+      I usually don't do a lot of backend work nowadays, I enjoy mostly the front
+      end, so never had much use for this. Most of the backend work I did was on
+      Rails, and now I'm more interested on decentralized applications, which are
+      front-end heavy.
+  -
+    name: Tailwind
+    experience: 8
+    interest: 8
+    description:
+      You know when there is something that the first time you see it you say
+      "what the heck, that's horrible I would never use that". And then you start
+      using and it starts to grow on you. Tailwind was like this for me. At first
+      it was the ugliest thing, it was against everything I was taught about
+      writing styles on the web. And then, when you feel the release of not having
+      to come up with class names for everything you do, and just working
+      with the HTML and doing classes on JS, you understand.
+tech:
+  -
+    name: NodeJS
+    experience: 9
+    interest: 8
+    description:
+      NodeJS is just JavaScript for general programming outside web browsers.
+      It's a nice tech and there are countless tools and software built with it.
+      I enjoy using as much as I enjoy using JavaScript and TypeScript.
+  -
+    name: HTML
+    experience: 10
+    interest: 10
+    description:
+      HTML is just a set of default components that web browsers all agree to
+      render in the same way. It's the building blocks of the web, so there is that.
+  -
+    name: CSS
+    experience: 10
+    interest: 10
+    description:
+      CSS is what we do to style things on the web. We change the colors, the
+      layout, the design, etc. It's an extensive field of knobs you can touch
+      to tune the web to your liking. I love touching the knobs and making wacky
+      stuff.
+      I also have experience using precompilers like SASS, LESS, Stylus, and
+      PostCSS with it's plugins.
+
+  -
+    name: Web Ecosystem
+    experience: 10
+    interest: 10
+    description:
+      The web is a collection of technologies that work together to bring you
+      This includes HTML, CSS, JavaScript, web browsers, build systems
+      (such as Webpack, Parcel, Rollup), and a myriad of libraries and related
+      tech. The web has been my playground since I was a kid, it's my water.
+  -
+    name: DevOps
+    experience: 5
+    interest: 7
+    description:
+      Development Operations is what we do to manage servers, deployment
+      and such online to get the apps to the people and keep all the apps
+      humming, stable, and happy.
+      I'm not an expert, but I can
+      configure a server with SSH access, deploy Docker containers and manage
+      Google or Amazon cloud computing servers.
+  -
+    name: IPFS
+    experience: 2
+    interest: 10
+    descripiton:
+      The Inter-Planetary File System is a way to store files on a global
+      Distributed Hash Table (DHT), it's an amazing new tech that allows humanity
+      to share files on the Internet without boundaries. Truly the future of hosting,
+      combine it with Holochain, and you have a new Internet.
+  -
+    name: Holochain
+    experience: 2
+    interest: 10
+    description:
+      I believe this is the future of software platforms. It an amazing new technology
+      that allows for decentralized, scalable, protocol-based applications that no one owns.
+      If you never heard of it, you're on for a ride, google it out, it's incredible, I'm
+      super hyped.
+      The development of the zomes (the apps) is made on Rust and then compiled to WASM, so I'm
+      on my journey to learn Rust now.
+      It's not a blockchain, and every app lives on it's own network. The apps may
+      then be combined to make a mosaic. Truly the future.
+  -
+    name: Blockchain
+    experience: 2
+    interest: 7
+    description:
+      Blockchain, the tech that I always wanted to learn but never did. I mean,
+      I know the gist of it, I understand how they work, but I haven't actually written
+      much software for it. Honestly, now that Holochain is in the horizon, blockchain seems
+      a little less enticing.
+  -
+    name: Document Databases
+    experience: 4
+    interest: 9
+    description:
+      This is the new thing in databases, TBH I like it more than relational databases,
+      it's less data conversions from the app to the storage system. I first learned
+      touched the subject on Firebase and now I'm knees deep into CouchDB for a current
+      project because I wanted something less propietary.
+  -
+    name: Relational Databases
+    experience: 8
+    interest: 8
+    description:
+      The first DB I used was MySQL on the time of PHP. Then when I started coding
+      in Ruby & Rails everyone was using Postgress, so I used that too. It's really
+      not much of a difference, most of the stuff is abstracted by ORM layers anyway.
+      I can read raw SQL and write basic queries though; and complex queries if you give
+      me some time and access to Google.
+
+  -
+    name: GraphQL
+    experience: 5
+    interest: 7
+    description:
+      GraphQL is a nice tech. I've mostly used it on Gatsby TBH, so I really haven't
+      used it much in production environments.
+  -
+    name: 3D Modeling
+    experience: 7
+    interest: 9
+    description:
+      I have a 3D printer, and enjoy doing 3D modeling with Fusion 360.
+      I also enjoy using SketchUp to make quick designs for furniture
+      and changes in my home.
+      I'm not and expert, but I know the tools quite well.
+software:
+  -
+    name: VSCode
+    description: This is my IDE/text editor of choice.
+  -
+    name: Git
+    description:
+      I keep track of all my code with Git, usually in combination with Github
+  -
+    name: Fusion 360
+    description:
+      Fusion 360 is a free (but not libre) software to create parametric
+      3D design, I use it to create stuff to 3D print mostly.
+  -
+    name: SketchUp
+    description:
+      SketchUp is the first app I learned to use to create 3D stuff, it's a
+      nifty tool to have, as paper is often very limiting. I use it to design
+      furniture and stuff I want to do around tho house.
+  -
+    name: CLI
+    descripiton:
+      There is so many tools for the CLI that would take me forever to name them,
+      but I am deeply grateful I know how to use the CLI to control computers.
+      It's the doorway to the world of informatics.
