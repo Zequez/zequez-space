@@ -224,13 +224,14 @@ tech:
     interest: 10
     description:
       I believe this is the future of software platforms. It an amazing new technology
-      that allows for decentralized, scalable, protocol-based applications that no one owns.
+      that allows for decentralized, scalable, protocol-based, agent-centric applications
+      that no one owns.
       If you never heard of it, you're on for a ride, google it out, it's incredible, I'm
       super hyped.
       The development of the zomes (the apps) is made on Rust and then compiled to WASM, so I'm
       on my journey to learn Rust now.
       It's not a blockchain, and every app lives on it's own network. The apps may
-      then be combined to make a mosaic. Truly the future.
+      then be combined to make a mosaic. Truly next gen.
   -
     name: Blockchain
     experience: 2

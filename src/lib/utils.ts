@@ -45,5 +45,6 @@ export function onMultiDeviceHoverLeave(
 export const hsl = (
   hue: number,
   saturation: number,
-  lightness: number
-): string => `hsl(${hue}, ${saturation}%, ${lightness}%)`
+  lightness: number,
+  opacity = 100
+): string => `hsla(${hue}, ${saturation}%, ${lightness}%, ${opacity}%)`

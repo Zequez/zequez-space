@@ -23,6 +23,10 @@ html, body, #___gatsby, #gatsby-focus-wrapper, #gatsby-focus-wrapper {
   text-shadow: 0 1px 0 rgba(0,0,0,0.5)
 }
 
+.ellipsis {
+  text-overflow: ellipsis;
+}
+
 
 /* @layer components {
   .btn-primary {

@@ -2,7 +2,7 @@ import React from 'react'
 import { Link, PageProps, useStaticQuery, graphql } from 'gatsby'
 import Img from 'gatsby-image'
 import cx from 'classnames'
-
+import { hsl } from '@/lib/utils'
 import Layout from '../components/Layout'
 import SEO from '../components/Seo'
 import IconTelegram from '~icons/brands/telegram.svg'
@@ -67,83 +67,116 @@ const IndexPage = ({}: PageProps): JSX.Element => {
         </Pha>
       </Section>
       <Section>
-        <Heading>Software Making</Heading>
-        <SubHeading>Craftmanship of the digital era</SubHeading>
-        <div className="px-4">
-          <div className="bg-white bg-opacity-25 px-4 py-2 rounded-md mb-2">
-            Currently active projects
-          </div>
-          <div className="bg-white bg-opacity-25 px-4 py-2 rounded-md mb-2">
-            Personal projects over the years
-          </div>
-          <div className="bg-white bg-opacity-25 px-4 py-2 rounded-md mb-2">
-            Contract projects over the years
-          </div>
-          <div className="bg-white bg-opacity-25 p-4 rounded-md mb-2">
-            <div className="mb-4">
-              Tech that I find exciting and love playing and learning with
+        <Heading>My work</Heading>
+        <SubHeading>I mostly make software; mostly web software</SubHeading>
+        <div className="px-4 mt-2 flex flex-col">
+          <div className="relative bg-white bg-opacity-25 px-4 py-4 rounded-md mb-2">
+            <div
+              className="absolute left-0 top-0 px-1 -mt-3 ml-2 rounded-sm
+            text-white bg-black bg-opacity-50 uppercase text-xs"
+            >
+              Current focus
             </div>
-            <div className="flex flex-wrap justify-center -ml-1 -mr-1">
-              {[
-                'The web ecosystem',
-                'Holochain',
-                'Elm',
-                'TypeScript',
-                'IPFS',
-                '3D Printing',
-                'Ionic Framework',
-                'React',
-                'CouchDB',
-              ].map((tech, i) => (
-                <div
-                  key={i}
-                  className="px-2 py-1 m-1 flex-grow text-center bg-teal-500 rounded-md"
-                >
-                  {tech}
-                </div>
-              ))}
+            <div className="font-semibold text-lg mb-2">Agora.Mardel</div>
+            <div className="flex flex-wrap -m-1 mb-2">
+              <div className="bg-black bg-opacity-25 rounded-sm text-xs m-1 px-1">
+                TypeScript
+              </div>
+              <div className="bg-black bg-opacity-25 rounded-sm text-xs m-1 px-1">
+                React
+              </div>
+              <div className="bg-black bg-opacity-25 rounded-sm text-xs m-1 px-1">
+                CouchDB (on the work)
+              </div>
+              <div className="bg-black bg-opacity-25 rounded-sm text-xs m-1 px-1">
+                Holochain (wishlist)
+              </div>
+              <div className="bg-black bg-opacity-25 rounded-sm text-xs m-1 px-1">
+                AGPL
+              </div>
             </div>
-            <div className="flex justify-end mt-2">
-              <Link className="inline-flex">
-                Learn more about the tech I've used
-                <IconRight className="ml-2 h-6 fill-current" />
-              </Link>
+            <p className="mb-1">
+              Agora.Mardel is a collaborative app for my hometown to help all
+              our local vegan, biodynamic, cooperative and environmental
+              organizations, businesses and activists.
+            </p>
+            <p className="mb-1">
+              The strategy is to build it in a way that can be self-managed by
+              locals and progressively add in decentralized technology over time
+              (I want it to use Holochain and IPFS). I'm going to keep adding
+              tools as I find the systems and people that would benefit from
+              them.
+            </p>
+            <p className="mb-1">
+              I also want it to serve as a place to redirect people when doing
+              activism locally.
+            </p>
+            <div className="flex -mx-1 pt-2 justify-end">
+              <a
+                href="https://agora.mardel.org"
+                className="bg-black bg-opacity-25 mx-1 px-2 py-1 rounded-sm"
+              >
+                Visit on agora.mardel.org
+              </a>
+              <a
+                href="https://github.com/zequez/agora-mardel"
+                className="bg-black bg-opacity-25 mx-1 px-2 py-1 rounded-sm"
+              >
+                On Github
+              </a>
             </div>
           </div>
+          <SimpleLink to="/projects">
+            Explore all my work (12 more projects)
+          </SimpleLink>
         </div>
       </Section>
       <Section>
-        <Heading>Work</Heading>
-        <SubHeading>We all desire meaningful work</SubHeading>
+        <Heading>Need a hand?</Heading>
+        <SubHeading>Let us work together</SubHeading>
+        <div className="px-4"></div>
+        <div className="px-4 flex flex-col">
+          <p className="mb-1">
+            I can help you with web/app/mobile development, DevOps, consulting,
+            maintenance, task automation, and really anything software or web
+            related.
+          </p>
+          <p className="mb-4">
+            I specially love cooperatives work arrangements, if you want partner
+            up on an horizontal organization count me in!
+          </p>
+          <SimpleLink to="/projects">
+            Explore my skillset, see if I fit you
+          </SimpleLink>
+        </div>
+      </Section>
+      <Section>
+        <Heading>Want to give me a hand?</Heading>
+        <SubHeading>Patreon my work</SubHeading>
         <div className="px-4">
-          <div className="bg-white bg-opacity-25 px-4 py-2 rounded-md mb-2">
-            Help me help each other. <br />
-            Let's work together!
-          </div>
-          <div
-            className=" bg-white bg-opacity-25
-            rounded-md mb-2"
-          >
-            <div className="px-4 py-2 border-b border-white border-opacity-25">
-              Help me help others. <br />
-              Patreon my work.
-            </div>
-            <div className="px-4 py-1 text-sm">Current Patreons</div>
-            {[{ name: 'My ever dwilding savings', amount: 'USD 200' }].map(
-              ({ name, amount }) => (
-                <div
-                  key={name}
-                  className="flex px-4 py-1 border-t border-white border-opacity-25 text-sm"
-                >
-                  <div className="flex-grow">{name}</div> <div>{amount}</div>
-                </div>
-              )
-            )}
-          </div>
-          <div className="bg-white bg-opacity-25 px-4 py-2 rounded-md mb-2">
-            Finances report: what I use money for? 🔥
-            <br />
-            <div className="text-xs">(Hint: It's mostly rent and food)</div>
+          <p className="mb-1">
+            Let's practice gift economics together! I'm building free and open
+            source software for the commons and doing my best as an activist to
+            help everyone around me.
+          </p>
+          <p className="mb-1">
+            If you are going through an abundant season and want to patreon me I
+            would love to meet you! If I can help you with anything
+            software-related or otherwise don't hesitate to drop me a line! I am
+            very approachable!
+          </p>
+          <p className="mb-4">
+            I really want to believe that a whole different kind of world is
+            possible.
+          </p>
+          <div className="flex justify-end">
+            <a
+              href="https://liberapay.com/Zequez/donate"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <img src="https://img.shields.io/liberapay/receives/Zequez.svg?logo=liberapay" />
+            </a>
           </div>
         </div>
       </Section>
@@ -153,37 +186,49 @@ const IndexPage = ({}: PageProps): JSX.Element => {
           I may not respond right away, but I will respond. You can ask me
           whatever you want, and I'll do my best to help you.
         </SubHeading>
-        <div className="px-4 -m-1 flex flex-wrap justify-center">
+        <div className="px-4 -m-1 flex justify-center">
           {[
             {
-              color: 'bg-green-700',
+              hue: 80,
               Icon: IconWhatsapp,
+              name: 'Phone/Whatsapp',
               text: '+5492235235568',
-              link: 'https://arsars',
+              link: 'https://wa.me/5492235235568',
             },
             {
-              color: 'bg-blue-500',
+              hue: 190,
               Icon: IconTelegram,
+              name: 'Telegram',
               text: '@Zequez',
-              link: 'https://asnaeirosar',
+              link: 'https://t.me/Zequez',
             },
             {
-              color: 'bg-red-500',
+              hue: 15,
               Icon: IconEmail,
+              name: 'Email',
               text: 'zequez@gmail.com',
-              link: 'https://asnaeirosar',
+              link: 'mailto:zequez@gmail.com',
             },
           ].map((v, i) => (
-            <a
-              key={i}
-              href={v.link}
-              className={cx(
-                `rounded-md inline-flex items-center m-1 p-2 text-sm`,
-                v.color
-              )}
-            >
-              <v.Icon className="h-4 mr-2 current-color" /> {v.text}
-            </a>
+            <div key={i} className="w-1/3">
+              <a
+                href={v.link}
+                className={cx(
+                  `block rounded-md m-1 p-2  text-center bg-opacity-50 shadow-sm`
+                )}
+                target="_blank"
+                rel="noreferrer"
+                style={{ backgroundColor: hsl(v.hue, 40, 50) }}
+              >
+                <div>
+                  <v.Icon className="h-8 mb-2 inline-block current-color" />
+                </div>
+                <div className="font-semibold text-sm overflow-hidden ellipsis">
+                  {v.name}
+                </div>
+                <div className="text-xs overflow-hidden ellipsis">{v.text}</div>
+              </a>
+            </div>
           ))}
         </div>
       </Section>
@@ -194,10 +239,10 @@ const IndexPage = ({}: PageProps): JSX.Element => {
           doing activism. One part of me cannot be separated from another.
         </SubHeading>
         <div className="px-4 flex flex-col">
-          <SimpleLink to="/writer">Writing & Blogging</SimpleLink>
-          <SimpleLink to="/chef">Vegan food alchemy & Recipes</SimpleLink>
-          <SimpleLink to="/maker">DIY & Making</SimpleLink>
-          <SimpleLink to="/gardener">Gardening & Growing food</SimpleLink>
+          <SimpleLink to="/writer">📃👨‍🏫 Writing & Blogging</SimpleLink>
+          <SimpleLink to="/chef">🌮👨‍🍳 Vegan food alchemy & Recipes</SimpleLink>
+          <SimpleLink to="/maker">🔨👨‍🏭 DIY & Making</SimpleLink>
+          <SimpleLink to="/gardener">🍅👨‍🌾 Gardening & Growing food</SimpleLink>
         </div>
       </Section>
       <Section>
@@ -209,28 +254,32 @@ const IndexPage = ({}: PageProps): JSX.Element => {
         </SubHeading>
         <div className="px-4 flex flex-col">
           <SimpleLink to="/causes/floss">
-            Free and open source software movement
+            🍏💻 Free and open source software movement
           </SimpleLink>
-          <SimpleLink to="/causes/veganism">Veganism movement</SimpleLink>
+          <SimpleLink to="/causes/veganism">🐮💚 Veganism movement</SimpleLink>
           <SimpleLink to="/causes/buddhism">
-            Engaged buddhism movement
+            ☸️🧘‍♂️ Engaged buddhism movement
           </SimpleLink>
           <SimpleLink to="/causes/cooperativism">
-            Cooperative movement
+            🌲🌲 Cooperative movement
           </SimpleLink>
           <SimpleLink to="/causes/biodynamic">
-            Biodynamic agriculture movement
+            🌱🌎 Biodynamic agriculture movement
           </SimpleLink>
         </div>
       </Section>
       <Section>
         <Heading>Interbeing</Heading>
         <SubHeading>
-          I'm but a sum of everyone that left an imprint on me. My parents, my
-          family, my teachers, my companions, my town, my experiences. I carry
-          them all in my heart. And now, also in my personal website. This is my
-          way to commemorate and express my gratitude to the people that touched
-          me.
+          <p className="mb-1">
+            I'm but a sum of everyone that left an imprint on me. My parents, my
+            family, my teachers, my companions, my town, my experiences. I carry
+            them all in my heart.
+          </p>
+          <p className="mb-1">
+            This is my way to commemorate and express my gratitude to the people
+            that touched me.
+          </p>
         </SubHeading>
         <div className="px-4 -m-2 flex flex-wrap">
           <Monument

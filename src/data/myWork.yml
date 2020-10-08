@@ -1,0 +1,24 @@
+-
+  name: Agora Mardel
+  type: personal
+  active: true
+  tools:
+    - JavaScript
+    - TypeScript
+    - React
+    - Firebase
+    - CouchDB
+    - Tailwind
+    - HTML
+    - CSS
+  hours:
+  description:
+-
+  name: Covid Heroes
+  type: contract
+  active: false
+  tools:
+  hours:
+  description:
+
+-
