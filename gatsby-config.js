@@ -65,7 +65,7 @@ module.exports = {
         background_color: fullConfig.theme.colors.white,
         theme_color: fullConfig.theme.colors.primary,
         display: `minimal-ui`,
-        icon: `src/images/icon.svg`,
+        icon: `${__dirname}/src/images/icon.svg`,
       },
     },
     {
@@ -87,12 +87,6 @@ module.exports = {
             ? [require(`cssnano`)]
             : []),
         ],
-      },
-    },
-    {
-      resolve: 'gatsby-plugin-emoji-favicon',
-      options: {
-        emoji: '🌳',
       },
     },
     {

@@ -55,7 +55,7 @@ const IndexPage = ({}: PageProps): JSX.Element => {
           `help`,
         ]}
         description="My little space of the Internet to spread love and understanding."
-        title="Zequez's Space"
+        title="Meet me"
       />
       <Section>
         <Heading>Hi there</Heading>
@@ -268,13 +268,31 @@ const IndexPage = ({}: PageProps): JSX.Element => {
           </SimpleLink>
         </div>
       </Section>
-      <Section>
+      {/* <Section>
         <Heading>Interbeing</Heading>
         <SubHeading>
+          I'm but a sum of everyone that left an imprint on me. My parents, my
+          family, my teachers, my companions, my town, my experiences. I carry
+          them all in my heart.
+        </SubHeading>
+        <div className="px-4">
           <p className="mb-1">
-            I'm but a sum of everyone that left an imprint on me. My parents, my
-            family, my teachers, my companions, my town, my experiences. I carry
-            them all in my heart.
+            Thank you Thich Nhat Hanh, Charles Eisenstein, Rupert Sheldrake for
+            teaching me so much.
+          </p>
+          <p className="mb-1">
+            Thank you mom, dad and Maxi for all the love you always gave me.
+          </p>
+          <p className="mb-1">
+            Thank you Celeste for being here for me; I'm here for you too.
+          </p>
+        </div>
+      </Section>
+      <Section>
+        <Heading>Teachers</Heading>
+        <SubHeading>
+          <p className="mb-1">
+            These people have
           </p>
           <p className="mb-1">
             This is my way to commemorate and express my gratitude to the people
@@ -301,7 +319,7 @@ const IndexPage = ({}: PageProps): JSX.Element => {
             photo={people['rupert.jpg']}
           />
         </div>
-      </Section>
+      </Section> */}
       <div className="flex-grow bg-blue-500"></div>
     </Layout>
   )

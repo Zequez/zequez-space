@@ -148,7 +148,7 @@ const generateBlobs = (
   const topSpace = Math.round(height / (count + 1))
   const hueSpace = Math.round(360 / (count + 1))
   return [...Array(count)].map((_, i) =>
-    newBlob(i * topSpace, (hue + i * hueSpace) % 360)
+    newBlob(i * topSpace, (360 - hue - i * hueSpace) % 360)
   )
 }
 

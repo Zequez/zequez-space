@@ -16,8 +16,8 @@ module.exports = {
         85: '0.85',
       },
       colors: {
-        primary: 'rgb(36,62,120)',
-        secondary: 'rgb(249,218,49)',
+        primary: 'hsl(100,45,50)',
+        secondary: 'hsl(280,45,50)',
       },
       fontFamily: {},
       fontSize: {
