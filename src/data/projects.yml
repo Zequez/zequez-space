@@ -1,0 +1,79 @@
+projects:
+  -
+    name: Agora.Mardel
+    tagline: Current Focus
+    highlight: true
+    tags:
+      - TypeScript
+      - React
+      - CouchDB (on the work)
+      - Holochain (wishlist)
+      - AGPL
+    description:
+      -
+        Agora.Mardel is a collaborative app for my hometown to help all
+        our local vegan, biodynamic, cooperative and environmental
+        organizations, businesses and activists.
+      -
+        The strategy is to build it in a way that can be self-managed by
+        locals and progressively add in decentralized technology over time
+        (I want it to use Holochain and IPFS). I'm going to keep adding
+        tools as I find the systems and people that would benefit from
+        them.
+      -
+        I also want it to serve as a place to redirect people when doing
+        activism locally.
+    links:
+      -
+        text: Visit on agora.mardel.org
+        href: https://agora.mardel.org
+      -
+        text: On Github
+        href: https://github.com/zequez/agora-mardel
+
+  -
+    name: Mandelbrot Sandbox
+    tagline: Latest Experiment
+    tags:
+      - Rust
+      - TypeScript
+      - Web Assembly
+      - React
+      - AGPL
+    description:
+      - In my aspiration to learn Rust so I can code for Holochain, and in my
+        mesmerization with fractals and the Universe, I created this and put
+        my newly acquired knowledge of Rust to the test and dipped my toes
+        in WebAssembly.
+
+      - While the water was cold and confusing, and I still don't really understand
+        how macros work, I was told I don't need to learn to CREATE macros to understand
+        how to use them, which is true for most of the technology we use nowadays. The
+        experience was overall pleasant.
+      -
+        Coming from mostly a place of high-level languages, Rust was a bit scary to be honest.
+        Last time I used a high level language was years ago, first on my early days of programming
+        with C++ and Pascal (in school), and later when I was playing with Arduino. Took me
+        a while to get myself to actually sit and start learning. Seems like a small thing
+        but to my it's a big _heal_. The incessant noise in my head that was telling me
+        I was too old, or I that I should already know all this stuff, how could I call me
+        myself a programmer! *Shame on me? Right!?*, that voice, that voice is a little quieter.
+
+      -
+        Sure I know I'm not the voices in my head, sure, I can see it now. But
+        how often is the voice just quiet enough so you can't hear it, but loud
+        enough that you are feeling it? And how often is quiet enough you can't
+        even feel it anymore, but it's eternally being dimly imprinted in everything you see?
+        In every thought you experience?
+
+      -
+        Let's talk about fractals. We're all fractals, and we all love fractals, isn't that
+        beautiful? Look at a brocoli, look at a tree, look at your hand, look at your
+        family, look at your mind, look at the forest, look at the river, look at water,
+        look at yourself. Everywhere you look we see fractals. Who knows what's going on?
+        Who is to say that the whole universe isn't contained in a single atom? Who is to say
+        the whole universe isn't contained in my being? Who are we?
+
+        I learned a bit about how memory works
+        Fractals are fascinating
+

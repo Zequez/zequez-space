@@ -19,6 +19,7 @@
     "develop": "GATSBY_HOT_LOADER=fast-refresh gatsby develop -H 0.0.0.0",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
+    "deploy": "ipfs-deploy public -p pinata -d cloudflare",
     "test": ""
   },
   "dependencies": {
@@ -73,6 +74,7 @@
     "gatsby-transformer-sharp": "^2.5.15",
     "gatsby-transformer-yaml-full": "^0.3.4",
     "gatsby-yaml-full-markdown": "^0.3.4",
+    "ipfs-deploy": "^8.0.1",
     "lodash": "^4.17.20",
     "mobx": "^6.0.1",
     "mobx-react-lite": "^3.0.0",

@@ -9,6 +9,7 @@ import IconTelegram from '~icons/brands/telegram.svg'
 import IconWhatsapp from '~icons/brands/whatsapp.svg'
 import IconEmail from '~icons/solid/envelope.svg'
 import IconRight from '~icons/solid/angle-right.svg'
+import { projects } from '../data/projects.yml'
 
 const IndexPage = ({}: PageProps): JSX.Element => {
   const people = useStaticQuery(graphql`
@@ -70,62 +71,49 @@ const IndexPage = ({}: PageProps): JSX.Element => {
         <Heading>My work</Heading>
         <SubHeading>I mostly make software; mostly web software</SubHeading>
         <div className="px-4 mt-2 flex flex-col">
-          <div className="relative bg-white bg-opacity-25 px-4 py-4 rounded-md mb-2">
-            <div
-              className="absolute left-0 top-0 px-1 -mt-3 ml-2 rounded-sm
+          {projects
+            .filter((p) => p.highlight)
+            .map((project, i) => (
+              <div
+                key={i}
+                className="relative bg-white bg-opacity-25 px-4 py-4 rounded-md mb-2"
+              >
+                <div
+                  className="absolute left-0 top-0 px-1 -mt-3 ml-2 rounded-sm
             text-white bg-black bg-opacity-50 uppercase text-xs"
-            >
-              Current focus
-            </div>
-            <div className="font-semibold text-lg mb-2">Agora.Mardel</div>
-            <div className="flex flex-wrap -m-1 mb-2">
-              <div className="bg-black bg-opacity-25 rounded-sm text-xs m-1 px-1">
-                TypeScript
+                >
+                  Current focus
+                </div>
+                <div className="font-semibold text-lg mb-2">{project.name}</div>
+                <div className="flex flex-wrap -m-1 mb-2">
+                  {project.tags.map((tagName) => (
+                    <div
+                      key={tagName}
+                      className="bg-black bg-opacity-25 rounded-sm text-xs m-1 px-1"
+                    >
+                      {tagName}
+                    </div>
+                  ))}
+                </div>
+                {project.description.map((pharagraph, i) => (
+                  <p className="mb-1" key={i}>
+                    {pharagraph}
+                  </p>
+                ))}
+                <div className="flex -mx-1 pt-2 justify-end">
+                  {project.links.map(({ text, href }, i) => (
+                    <a
+                      href={href}
+                      key={i}
+                      className="bg-black bg-opacity-25 mx-1 px-2 py-1 rounded-sm"
+                    >
+                      {text}
+                    </a>
+                  ))}
+                </div>
               </div>
-              <div className="bg-black bg-opacity-25 rounded-sm text-xs m-1 px-1">
-                React
-              </div>
-              <div className="bg-black bg-opacity-25 rounded-sm text-xs m-1 px-1">
-                CouchDB (on the work)
-              </div>
-              <div className="bg-black bg-opacity-25 rounded-sm text-xs m-1 px-1">
-                Holochain (wishlist)
-              </div>
-              <div className="bg-black bg-opacity-25 rounded-sm text-xs m-1 px-1">
-                AGPL
-              </div>
-            </div>
-            <p className="mb-1">
-              Agora.Mardel is a collaborative app for my hometown to help all
-              our local vegan, biodynamic, cooperative and environmental
-              organizations, businesses and activists.
-            </p>
-            <p className="mb-1">
-              The strategy is to build it in a way that can be self-managed by
-              locals and progressively add in decentralized technology over time
-              (I want it to use Holochain and IPFS). I'm going to keep adding
-              tools as I find the systems and people that would benefit from
-              them.
-            </p>
-            <p className="mb-1">
-              I also want it to serve as a place to redirect people when doing
-              activism locally.
-            </p>
-            <div className="flex -mx-1 pt-2 justify-end">
-              <a
-                href="https://agora.mardel.org"
-                className="bg-black bg-opacity-25 mx-1 px-2 py-1 rounded-sm"
-              >
-                Visit on agora.mardel.org
-              </a>
-              <a
-                href="https://github.com/zequez/agora-mardel"
-                className="bg-black bg-opacity-25 mx-1 px-2 py-1 rounded-sm"
-              >
-                On Github
-              </a>
-            </div>
-          </div>
+            ))}
+
           <SimpleLink to="/projects">
             Explore all my work (12 more projects)
           </SimpleLink>
@@ -249,8 +237,8 @@ const IndexPage = ({}: PageProps): JSX.Element => {
         <Heading>Causes I resonate with</Heading>
         <SubHeading>
           I believe all these converge into the more beautiful world our hearts
-          know it's possible. Working on anything resonating with this, fills me
-          with great joy.
+          know it's possible. They all pull me into the resonance through my
+          heart!
         </SubHeading>
         <div className="px-4 flex flex-col">
           <SimpleLink to="/causes/floss">
