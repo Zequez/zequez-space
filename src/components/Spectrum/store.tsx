@@ -88,6 +88,7 @@ export class Store {
     this.hue = (this.hue + _.random(30)) % 360
     this.height = document.body.scrollHeight
     this.width = document.body.scrollWidth
+    console.log(this.height, this.width)
     this.blobs = generateBlobs(this.hue, this.height, this.width, 120)
     this.profile = generateProfile()
   }

@@ -5377,6 +5377,11 @@ date-fns@^2.0.1, date-fns@^2.14.0, date-fns@^2.8.1:
   resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-2.16.1.tgz#05775792c3f3331da812af253e1a935851d3834b"
   integrity sha512-sAJVKx/FqrLYHAQeN7VpJrPhagZc9R4ImZIWYRFZaaohR3KzmuK88touwsSwSVT8Qcbd4zoDsnGfX4GFB4imyQ==
 
+dayjs@^1.8.15:
+  version "1.10.4"
+  resolved "https://registry.yarnpkg.com/dayjs/-/dayjs-1.10.4.tgz#8e544a9b8683f61783f570980a8a80eaf54ab1e2"
+  integrity sha512-RI/Hh4kqRc1UKLOAf/T5zdMMX5DQIlDxwUe3wSyMMnEbGunnpENCdbUgM+dW7kXidZqCttBrmw7BhN4TMddkCw==
+
 de-indent@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/de-indent/-/de-indent-1.0.2.tgz#b2038e846dc33baa5796128d0804b455b8c1e21d"
@@ -7850,6 +7855,15 @@ gatsby-source-filesystem@^2.3.30:
     read-chunk "^3.2.0"
     valid-url "^1.0.9"
     xstate "^4.11.0"
+
+gatsby-source-notion-database@^0.6.9:
+  version "0.6.9"
+  resolved "https://registry.yarnpkg.com/gatsby-source-notion-database/-/gatsby-source-notion-database-0.6.9.tgz#472795f2a97e4715944e866b6df9986c1e1cf955"
+  integrity sha512-aED+BbzyJ/zwIVNfgwjInQLnSmorplLZtmdUZFIqGB9hkU3NteavZg4Gwuf2qy/lq+Nr49FvmZv5FCa+GS37Pw==
+  dependencies:
+    notabase "0.7.0"
+    p-limit "^2.2.1"
+    puppeteer "^1.19.0"
 
 gatsby-telemetry@^1.3.22, gatsby-telemetry@^1.3.37:
   version "1.3.37"
@@ -11884,6 +11898,15 @@ normalize.css@^8.0.1:
   resolved "https://registry.yarnpkg.com/normalize.css/-/normalize.css-8.0.1.tgz#9b98a208738b9cc2634caacbc42d131c97487bf3"
   integrity sha512-qizSNPO93t1YUuUhP22btGOo3chcvDFqFaj2TRybP0DMxkHOCTYwp3n34fel4a31ORXy4m1Xq0Gyqpb5m33qIg==
 
+notabase@0.7.0:
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/notabase/-/notabase-0.7.0.tgz#1ce252d21ef7669ff7001f326fa26ca82ad9df6b"
+  integrity sha512-UR00cZwgg2dDSWY9KmtMrb+GfhSdSB5Tng4h/HbXw3PjKeo3+Mvh1Up6MApcq4CuK9csN9d0DJzE7X6X0iyrpQ==
+  dependencies:
+    axios "^0.19.0"
+    dayjs "^1.8.15"
+    node-fetch "^2.6.0"
+
 npm-conf@^1.1.0:
   version "1.1.3"
   resolved "https://registry.yarnpkg.com/npm-conf/-/npm-conf-1.1.3.tgz#256cc47bd0e218c259c4e9550bf413bc2192aff9"
@@ -12296,7 +12319,7 @@ p-is-promise@^1.1.0:
   resolved "https://registry.yarnpkg.com/p-is-promise/-/p-is-promise-1.1.0.tgz#9c9456989e9f6588017b0434d56097675c3da05e"
   integrity sha1-nJRWmJ6fZYgBewQ01WCXZ1w9oF4=
 
-p-limit@2.3.0, p-limit@^2.0.0, p-limit@^2.2.0:
+p-limit@2.3.0, p-limit@^2.0.0, p-limit@^2.2.0, p-limit@^2.2.1:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/p-limit/-/p-limit-2.3.0.tgz#3dd33c647a214fdfffd835933eb086da0dc21db1"
   integrity sha512-//88mFWSJx8lxCzwdAABTJL2MyWB12+eIY7MDL2SqLmAkeKU9qxRvWuSyTjm3FUmpBEMuFfckAIqEaVGUDxb6w==
@@ -13535,7 +13558,7 @@ pupa@^2.0.1:
   dependencies:
     escape-goat "^2.0.0"
 
-puppeteer@^1.10.0, puppeteer@^1.3.0:
+puppeteer@^1.10.0, puppeteer@^1.19.0, puppeteer@^1.3.0:
   version "1.20.0"
   resolved "https://registry.yarnpkg.com/puppeteer/-/puppeteer-1.20.0.tgz#e3d267786f74e1d87cf2d15acc59177f471bbe38"
   integrity sha512-bt48RDBy2eIwZPrkgbcwHtb51mj2nKvHOPMaSH2IsWiv7lOG9k9zhaRzpDZafrk05ajMc3cu+lSQYYOfH2DkVQ==

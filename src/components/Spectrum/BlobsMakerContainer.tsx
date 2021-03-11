@@ -16,8 +16,10 @@ const BlobsMakerContainer: React.FC<unknown> = observer(() => {
   } = useContext(StoreContext)
 
   useEffect(() => {
-    window.requestAnimationFrame(() => {
-      regenerate()
+    window.addEventListener('load', () => {
+      window.requestAnimationFrame(() => {
+        regenerate()
+      })
     })
   }, [])
 

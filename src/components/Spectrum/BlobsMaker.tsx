@@ -3,6 +3,8 @@ import cx from 'classnames'
 import { reverseMap, hsl } from '@/lib/utils'
 import { Path, Blob } from './store'
 
+const WIDTH = 820
+
 interface BlobsMakerProps {
   blobs: Blob[]
   saturation: number
@@ -36,9 +38,9 @@ const BlobsMaker: React.FC<BlobsMakerProps> = ({
     <div className="absolute inset-0 overflow-hidden">
       <div
         className="relative mx-auto z-20 sm:shadow-lg"
-        style={{ maxWidth: 512, backgroundColor: innerBgColor }}
+        style={{ maxWidth: WIDTH, backgroundColor: innerBgColor }}
       >
-        <Svg height={height} width={512}>
+        <Svg height={height} width={WIDTH}>
           {reverseMap(blobs, (blob, i) => (
             <SvgPath
               key={i}
@@ -48,7 +50,7 @@ const BlobsMaker: React.FC<BlobsMakerProps> = ({
           ))}
         </Svg>
       </div>
-      {width > 512 ? (
+      {width > WIDTH ? (
         <div
           className="absolute z-10 inset-0 overflow-hidden"
           style={{

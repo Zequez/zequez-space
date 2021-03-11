@@ -19,9 +19,13 @@ const Header: React.FC<unknown> = () => {
 
   return (
     <header
-      className={`p-4 pb-8 container mx-auto max-w-md
+      className={`p-4 pb-8 container mx-auto max-w-lg
       flex justify-center z-30 relative`}
     >
+      <div className="text-white absolute top-0 left-0 mt-4 ml-4 text-xs">
+        Ezequiel Schwartzman
+        <div className="text-white text-opacity-75">Wizard apprentice</div>
+      </div>
       <RainbowProfileContainer
         image={profile.file.childImageSharp.fixed}
         to="/"

@@ -110,6 +110,19 @@ module.exports = {
         name: 'data',
       },
     },
+    // {
+    //   resolve: `gatsby-source-notion-database`,
+    //   options: {
+    //     sourceConfig: [
+    //       {
+    //         name: 'posts',
+    //         table:
+    //           'https://www.notion.so/46d2fb4fce914dd088603ff7ab0d8c22?v=7d6ab8f9357a41a29b74920489a9abeb',
+    //         cacheType: 'html',
+    //       },
+    //     ],
+    //   },
+    // },
     // `gatsby-plugin-offline`,
   ],
 }
