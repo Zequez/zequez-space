@@ -22,7 +22,6 @@ const BlobsMakerContainer: React.FC<unknown> = observer(() => {
       })
     } else {
       window.addEventListener('load', () => {
-        window.alert('Loaded!')
         window.requestAnimationFrame(() => {
           regenerate()
         })
