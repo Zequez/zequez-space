@@ -11,17 +11,10 @@ const ContactPage = ({}: PageProps): JSX.Element => {
       <SEO
         keywords={[
           `zequez`,
+          `wizard`,
           `web development`,
           `personal site`,
-          `programming`,
-          `blog`,
-          `freelancer`,
-          `activism`,
-          `patreon`,
-          `peace`,
-          `buddhism`,
-          `vegan`,
-          `recipes`,
+          `contact page`,
           `help`,
         ]}
         description="My little space of the Internet to spread love and understanding."

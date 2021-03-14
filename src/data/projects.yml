@@ -1,45 +1,79 @@
 projects:
+  # -
+  #   name: Agora.Mardel
+  #   tagline: Current Focus
+  #   highlight: true
+  #   tags:
+  #     - TypeScript
+  #     - React
+  #     - CouchDB (on the work)
+  #     - Holochain (wishlist)
+  #     - AGPL
+  #   description:
+  #     -
+  #       Agora.Mardel is a collaborative app for my hometown to help all
+  #       our local vegan, biodynamic, cooperative and environmental
+  #       organizations, businesses and activists.
+  #     -
+  #       The strategy is to build it in a way that can be self-managed by
+  #       locals and progressively add in decentralized technology over time
+  #       (I want it to use Holochain and IPFS). I'm going to keep adding
+  #       tools as I find the systems and people that would benefit from
+  #       them.
+  #     -
+  #       I also want it to serve as a place to redirect people when doing
+  #       activism locally.
+  #   links:
+  #     -
+  #       text: Visit on agora.mardel.org
+  #       href: https://agora.mardel.org
+  #     -
+  #       text: On Github
+  #       href: https://github.com/zequez/agora-mardel
   -
-    name: Agora.Mardel
-    tagline: Current Focus
-    highlight: true
+    name: Santuario
+    slug: santuario
+    circa: "2021"
+    tagline: Main focus
     tags:
       - TypeScript
-      - React
-      - CouchDB (on the work)
-      - Holochain (wishlist)
-      - AGPL
+      - Elm
+      - LitElement
+      - Mapbox
+      - Experiment
+    images:
+      - santuario.png
     description:
-      -
-        Agora.Mardel is a collaborative app for my hometown to help all
-        our local vegan, biodynamic, cooperative and environmental
-        organizations, businesses and activists.
-      -
-        The strategy is to build it in a way that can be self-managed by
-        locals and progressively add in decentralized technology over time
-        (I want it to use Holochain and IPFS). I'm going to keep adding
-        tools as I find the systems and people that would benefit from
-        them.
-      -
-        I also want it to serve as a place to redirect people when doing
-        activism locally.
+      - This is a kind of sandbox project where I'm exploring different ways of
+        creating apps for communities. I'm exploring backends, decentralized tech,
+        new UX paradigms. There is a little bit of everything.
+      - Overall the idea of the project is to imagine we're all together in this and
+        we all live in big sanctuary called Earth. What kind of apps would we use? How
+        would we organize?
+      - I'm just having fun with this. And along the way I want to create something
+        that actual animal sanctuaries, shelters, and people in cities can use. The
+        project goes beyond just programming, I want to actually connect with people, maybe
+        even start some kind of organization to explore all these things further.
+        Let's brainstorm ideas! Who knows! I really like working on this.
     links:
       -
-        text: Visit on agora.mardel.org
-        href: https://agora.mardel.org
+        text: Visit app
+        href: https://santuario.zequez.space
       -
         text: On Github
-        href: https://github.com/zequez/agora-mardel
-
+        href: https://github.com/Zequez/santuario
   -
     name: Mandelbrot Sandbox
+    slug: mandelbrot
+    circa: "2020"
     tagline: Latest Experiment
     tags:
       - Rust
       - TypeScript
       - Web Assembly
       - React
-      - AGPL
+    images:
+      - mandelbrot.png
     description:
       - In my aspiration to learn Rust so I can code for Holochain, and in my
         mesmerization with fractals and the Universe, I created this and put
@@ -74,6 +108,12 @@ projects:
         Who is to say that the whole universe isn't contained in a single atom? Who is to say
         the whole universe isn't contained in my being? Who are we?
 
-        I learned a bit about how memory works
-        Fractals are fascinating
-
+      -
+        I learned a bit about how memory works; Fractals are fascinating.
+    links:
+      -
+        text: Visit app
+        href: https://mandelbrot.zequez.space
+      -
+        text: On Github
+        href: https://github.com/Zequez/mandelbrot-sandbox

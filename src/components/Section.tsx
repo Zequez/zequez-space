@@ -4,12 +4,9 @@ import cx from 'classnames'
 import IconRight from '~icons/solid/angle-right.svg'
 import IconExternalLink from '~icons/solid/external-link-alt.svg'
 
-export const Section: React.FC<unknown> = ({ children, id = null }) => {
+export const Section: React.FC<unknown> = ({ children }) => {
   return (
-    <div
-      className={cx('relative text-white text-opacity-85 mb-8 z-30')}
-      id={id}
-    >
+    <div className={cx('relative text-white text-opacity-85 mb-8 z-30')}>
       <div className={cx('')}>
         <div className="container max-w-screen-md mx-auto">{children}</div>
       </div>

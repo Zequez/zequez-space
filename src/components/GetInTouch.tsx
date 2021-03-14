@@ -6,7 +6,7 @@ import IconWhatsapp from '~icons/brands/whatsapp.svg'
 import IconEmail from '~icons/solid/envelope.svg'
 import { Section, Heading, SubHeading } from '../components/Section'
 
-export const GetInTouch: React.FC = ({ children }) => (
+export const GetInTouch: React.FC = () => (
   <Section>
     <Heading>Get in touch</Heading>
     <SubHeading>
