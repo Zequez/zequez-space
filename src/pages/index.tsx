@@ -44,7 +44,7 @@ const IndexPage = ({}: PageProps): JSX.Element => {
         </SubHeading>
         <LinksContainer>
           <SimpleLink to="https://www.notion.so/Mission-Misi-n-b1a05b1d61cd4dfc87d91258f70be767">
-            ❤ Personal mission statement
+            ❤ Personal mission statement (WIP)
           </SimpleLink>
         </LinksContainer>
       </Section>
@@ -76,25 +76,9 @@ const IndexPage = ({}: PageProps): JSX.Element => {
           <SimpleLink to="https://github.com/Zequez/the-hero-journey">
             🐎 The Hero Journey (life tracking app)
           </SimpleLink>
-        </LinksContainer>
-        <Pha>All stuff</Pha>
-        <LinksContainer>
           <SimpleLink to="https://github.com/zequez">
             <IconGithub className={IconClass} />
-            See my Github activity
-          </SimpleLink>
-          <SimpleLink to="/projects">🗄 Projects archive</SimpleLink>
-        </LinksContainer>
-      </Section>
-      <Section>
-        <Heading>Work in organizations</Heading>
-        <SubHeading>
-          I've worked on some places with some people; nothing too impressive.
-        </SubHeading>
-        <LinksContainer>
-          <SimpleLink to="https://www.linkedin.com/in/zequez">
-            <IconLinkedIn className={IconClass} />
-            Visit LinkedIn profile
+            All Github activity
           </SimpleLink>
         </LinksContainer>
       </Section>
@@ -115,7 +99,9 @@ const IndexPage = ({}: PageProps): JSX.Element => {
           I'll be happy to work together with you! Just ask!
         </Pha>
         <LinksContainer>
-          <SimpleLink to="/contact">💬 Get in touch</SimpleLink>
+          <SimpleLink to="https://cv.zequez.space">
+            👨‍💻 Technical Curriculum Vitae
+          </SimpleLink>
         </LinksContainer>
       </Section>
       <Section>
