@@ -43,8 +43,8 @@ const IndexPage = ({}: PageProps): JSX.Element => {
           I enjoy doing many things. Here you may find out about such things.
         </SubHeading>
         <LinksContainer>
-          <SimpleLink to="https://www.notion.so/Mission-Misi-n-b1a05b1d61cd4dfc87d91258f70be767">
-            ❤ Personal mission statement (WIP)
+          <SimpleLink to="https://www.notion.so/zequez/Free-Web-Developer-5c5aa4ad9fbb4546b2c85e1c539a95d8">
+            🌈 Personal work intention
           </SimpleLink>
         </LinksContainer>
       </Section>
@@ -64,8 +64,11 @@ const IndexPage = ({}: PageProps): JSX.Element => {
         </Pha>
         <Pha>Latest projects</Pha>
         <LinksContainer>
-          <SimpleLink to="https://github.com/Zequez/santuario">
-            🐮 Santuario (experimental tools for communities)
+          <SimpleLink to="https://github.com/Zequez/the-offering-game">
+            🍇 The Offering Game (experimental marketplace)
+          </SimpleLink>
+          <SimpleLink to="https://github.com/Zequez/agent-centric-prototyping-service">
+            🛸 Agent Centric Prototyping Service
           </SimpleLink>
           <SimpleLink to="https://github.com/Zequez/mandelbrot-sandbox">
             🌿 Mandelbrot Sandbox
@@ -75,6 +78,9 @@ const IndexPage = ({}: PageProps): JSX.Element => {
           </SimpleLink>
           <SimpleLink to="https://github.com/Zequez/the-hero-journey">
             🐎 The Hero Journey (life tracking app)
+          </SimpleLink>
+          <SimpleLink to="https://github.com/Zequez/santuario">
+            🐮 Santuario (experimental tools for communities)
           </SimpleLink>
           <SimpleLink to="https://github.com/zequez">
             <IconGithub className={IconClass} />
@@ -119,11 +125,6 @@ const IndexPage = ({}: PageProps): JSX.Element => {
           Whatever form of kindness you want to manifest, just get in touch with
           me so we can explore it together!
         </Pha>
-        <LinksContainer>
-          <SimpleLink to="https://www.notion.so/Material-desires-Deseos-materiales-f3da9213b8224697ba02befc8fea0108">
-            🥭 Desired material wealth page
-          </SimpleLink>
-        </LinksContainer>
         {/*
           <div className="flex justify-end">
             <a

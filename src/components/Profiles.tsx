@@ -31,7 +31,7 @@ export const Profiles: React.FC = ({ children }) => (
       <SimpleLink to="https://twitter.com/zequez">
         <IconTwitter className={IconClass} /> Twitter
       </SimpleLink>
-      <SimpleLink to="https://www.instagram.com/zequezs/">
+      <SimpleLink to="https://www.instagram.com/zequez.space/">
         <IconInstagram className={IconClass} /> Instagram
       </SimpleLink>
       <SimpleLink to="https://www.facebook.com/Zequez/">
