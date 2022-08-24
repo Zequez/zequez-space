@@ -64,6 +64,13 @@ const IndexPage = ({}: PageProps): JSX.Element => {
         </Pha>
         <Pha>Latest projects</Pha>
         <LinksContainer>
+          <SimpleLink to="https://github.com/Zequez/tzolkin-me">
+            🌈 13:20 Law of Time experimental tools
+          </SimpleLink>
+          <SimpleLink to="https://github.com/Zequez/gameworld-browser">
+            🌎 Gameworld Browser: An experimental way to use the web inspired by
+            <a href="http://startover.xyz"> Startover.xyz</a>
+          </SimpleLink>
           <SimpleLink to="https://github.com/Zequez/the-offering-game">
             🍇 The Offering Game (experimental marketplace)
           </SimpleLink>
