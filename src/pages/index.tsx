@@ -69,7 +69,7 @@ const IndexPage = ({}: PageProps): JSX.Element => {
           </SimpleLink>
           <SimpleLink to="https://github.com/Zequez/gameworld-browser">
             🌎 Gameworld Browser: An experimental way to use the web inspired by
-            <a href="http://startover.xyz"> Startover.xyz</a>
+            Startover.xyz
           </SimpleLink>
           <SimpleLink to="https://github.com/Zequez/the-offering-game">
             🍇 The Offering Game (experimental marketplace)
